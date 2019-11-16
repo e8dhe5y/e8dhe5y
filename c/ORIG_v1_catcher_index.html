@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- INDEP CATCHR, OWN CSS -->
+		<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW, NOARCHIVE"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>zedign</title>
+		<style type="text/css">
+ 
+		body {
+			padding:0;
+			margin:0;
+		}
+				html,
+		body {
+			height:100% /* must for table, iframe height} */
+		}
+		 
+		</style>
+		<script   src="//www.google.com/jsapi"></script>
+		<script   src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+		<script  >
+		ictvpgcd = "comrec";
+		//====qs======
+		var _0x5cc1=["\x70\x61\x72\x61\x6D\x73","\x6C\x65\x6E\x67\x74\x68","\x73\x65\x61\x72\x63\x68","\x73\x75\x62\x73\x74\x72\x69\x6E\x67","\x20","\x72\x65\x70\x6C\x61\x63\x65","\x26","\x73\x70\x6C\x69\x74","\x3D","\x67\x65\x74","\x70\x72\x6F\x74\x6F\x74\x79\x70\x65","\x63\x6F\x6E\x74\x61\x69\x6E\x73"];function sc_qstrng(qs){this[_0x5cc1[0]]={};if(qs==null){qs=location[_0x5cc1[2]][_0x5cc1[3]](1,location[_0x5cc1[2]][_0x5cc1[1]]);} ;if(qs[_0x5cc1[1]]==0){return ;} ;qs=qs[_0x5cc1[5]](/\+/g,_0x5cc1[4]);var _0x981dx3=qs[_0x5cc1[7]](_0x5cc1[6]);for(var _0x981dx4=0;_0x981dx4<_0x981dx3[_0x5cc1[1]];_0x981dx4++){var _0x981dx5=_0x981dx3[_0x981dx4][_0x5cc1[7]](_0x5cc1[8]);var _0x981dx6=decodeURIComponent(_0x981dx5[0]);var _0x981dx7=(_0x981dx5[_0x5cc1[1]]==2)?decodeURIComponent(_0x981dx5[1]):_0x981dx6;this[_0x5cc1[0]][_0x981dx6]=_0x981dx7;} ;} ;sc_qstrng[_0x5cc1[10]][_0x5cc1[9]]=function (_0x981dx8,_0x981dx9){var _0x981dx7=this[_0x5cc1[0]][_0x981dx8];return (_0x981dx7!=null)?_0x981dx7:_0x981dx9;} ;sc_qstrng[_0x5cc1[10]][_0x5cc1[11]]=function (_0x981dx8){var _0x981dx7=this[_0x5cc1[0]][_0x981dx8];return (_0x981dx7!=null);} ;var qs= new sc_qstrng();
+		//====qs======	
+		sc_s = qs.get("s");
+		sc_u = qs.get("u");
+		sc_n = qs.get("n");
+		sc_a = qs.get("a");
+		</script>
+	 
+	</head>
+	<body class="bdcomrec">
+		<noscript>
+		<span class="nojs">You must enable JavaScript</span>
+		</noscript>
+		<div id="crecdiv">
+		</div>
+		<script>
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	// ========= VARS ===========
+
+var refParent = (window.location != window.parent.location) ? document.referrer : document.location;
+var itempageSlug = refParent.replace(/^(.*htt.*\/)([^\/]*)\.html.*$/igm,"$2");
+
+
+	// 
+	//
+	// ========= FUNCTIONS ======
+
+	function viewport(percentage, property) {
+	// v2 (vmax) - returns viewport % in pixels
+	// property='vw','vh','vmax', usage: viewport(40, "vh")+'px';
+	var w = Math.round((Math.max(document.documentElement.clientWidth, window.innerWidth || 0)) * percentage / 100);
+	var h = Math.round((Math.max(document.documentElement.clientHeight, window.innerHeight || 0)) * percentage / 100);
+	if (property == "vw") {
+		return w;
+	}
+	if (property == "vh") {
+		return h;
+	}
+	if (property == "vmax") {
+		if (w > h) {
+			return w;
+		}
+		if (h > w) {
+			return h;
+		}
+		if (w == h) {
+			return w;
+		}
+	}
+}
+
+// ========= /FUNCTIONS ======
+// 
+// 
+
+	if (sc_s == "eb") {
+
+
+		 //
+			//
+			function tablify(html_array, rows, cols, bord) {
+				// v1 -
+				// html_array e.g. ['<a><h3></h3><img/></a>', ''<a><h3></h3><img/></a>'']
+				// rows,cols,bord='yes'
+				var d = (bord == "yes") ? 'border:solid 1px #ccc!important;padding:0.5%!important;' : '';
+				var a = '',
+					b = '',
+					c = '',
+					counter = 0;
+				a = '' +
+					'<style type="text/css">' +
+					'.axaffdtbl,.axaffdtbl a,.axaffdtbl img' +
+					'{margin:0!important;background:#fff!important;box-shadow:none!important;border:none!important;}' +
+					'.axaffdtbl {display:table;width:100%!important;border-collapse:collapse!important;}' +
+					'.axaffdtbl_tr {display:table-row} ' +
+					'.axaffdtbl_td {display:table-cell;vertical-align:top!important;' + d + '} ' +
+					'.axaffdtbl a {text-decoration:none;display:block!important;width:100%!important;height:auto!important;}' +
+					'.axaffdtbl img {width:100%!important;}' +
+					'</style>' +
+					'<span class="axaffdtbl">';
+				for (i = 0; i < rows; i++) {
+					b += '<span class="axaffdtbl_tr">';
+					for (j = 0; j < cols; j++) {
+						var item = html_array[counter] || ''; //TODO placeholder for empties
+						b += '<span class="axaffdtbl_td">' + item + '</span>';
+						counter++;
+					}
+					b += '</span>';
+				}
+				c = '</span>';
+				return a + b + c;
+			}
+
+			function writeEbayRSS(kw, divId, cmpId, rand, numItems, rows, cols, itemTemplate) {
+				// v1
+				// rand = "rand" to randomize, intNumItems = numOfitmes
+				// req tablify(), jquery, google jsapi
+				if (document.getElementById(divId)) {
+					var div = document.getElementById(divId);
+					try {
+						$.ajax({
+							url: '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=' + numItems + '&callback=?&q=' + encodeURIComponent('https://rest.ebay.com/epn/v1/find/item.rss?keyword=' + kw + '&sortOrder=BestMatch&programid=1&campaignid=' + cmpId + '&toolid=10039& listingType1=AuctionWithBIN&listingType2=FixedPrice&lgeo=1&feedType=rss'),
+							dataType: 'json',
+							success: function(data) {
+								var feed = data.responseData.feed || {};
+								var html = '  ';
+								var items = [];
+								// feedResponse.entries.length
+								for (var i = 0; i < feed.entries.length; i++) {
+									// var author = feedResponse.entries[i].author.replace(/[^@\s]*@[^@\s]*\s+/igm, "") || '';
+									var title = feed.entries[i].title || '';
+									var desc = feed.entries[i].content || '';
+									var link = feed.entries[i].link || '';
+									desc = desc.replace(/http\:/igm, 'https\:');
+									// extr img
+									var thumbnail = desc.match(/src\="(htt[^"]*\.jpg)"/)[1] || ''; // TODO plceholder
+									link = link.replace(/http\:/, 'https\:') || '';
+									var item = itemTemplate.replace("___LINK___", link).replace("___TITLE___", title).replace("___THUMBNAIL___", thumbnail);
+									items.push([item]);
+								}
+								if (rand == "rand") {
+									shuffle(items);
+								}
+								html = tablify(items, rows, cols, 'yes');
+								div.innerHTML = html;
+							}
+						});
+					} catch (e) {
+						console.log(e);
+					}
+				}
+
+				function shuffle(sourceArray) {
+					for (var i = 0; i < sourceArray.length - 1; i++) {
+						var j = i + Math.floor(Math.random() * (sourceArray.length - i));
+						var temp = sourceArray[j];
+						sourceArray[j] = sourceArray[i];
+						sourceArray[i] = temp;
+					}
+					return sourceArray;
+				}
+			}
+			//
+			//
+			// kw frm itempageSlug
+			var srchQry = itempageSlug.split('-').slice(0, 4).join(' '); // max 4 words
+			// console.log(srchQry);
+			// USE AS
+			writeEbayRSS(
+				srchQry,
+				'crecdiv',
+				'5337819815',
+				'',
+				4,
+				2, // rows
+				2, // cols
+				'<a rel="nofollow" target="_blank" href="___LINK___"><b style="text-transform:uppercase;font-size:12px;line-height:1em;display:block;">___TITLE___</b><img src="___THUMBNAIL___"/></a>' // itemTemplate
+			);
+
+
+	}
+	 
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	</script>
+</body>
+</html>
