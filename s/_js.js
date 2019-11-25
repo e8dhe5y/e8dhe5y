@@ -4,7 +4,6 @@
 // 
 ////
 // 
-
 // 
 // ====== vars ============
 if (typeof zdsite == 'undefined') {
@@ -558,7 +557,6 @@ function aead(divId, aid, akey, asize) {
 		}
 	}
 }
-
 ///// MODDED FOR AS_CD
 function asadRespId(prefix, postfix, divId, idTxt, slot, channel, orient, divWidth, divHeight) {
 	if (bnndQry == "yes") {
@@ -949,28 +947,25 @@ if (zdsite == "store") {
 	//// STORE CHANNELS
 	var ad_Channel = (ThsBlg_pg == 'mainpage') ? '8388720648' : '8388720648';
 	var lu_Channel = (ThsBlg_pg == 'mainpage') ? '2342187047' : '2342187047';
-	//// STORE BOTH MAINPAGE+ITEMPAGE BOTH DTP+MOB AD 1/1
-	//// STORE BOTH MAINPAGE+ITEMPAGE BOTH DTP+MOB AD 1/1
-	// prependHTML('leftbar', '<div style="max-width: ' + (detectmob() ? '90%' : '300px') + ' ; max-height:' + (detectmob() ? '150px' : '600px') + '; min-height:100px; margin-bottom:10px"><div id="as_sb1"></div></div>');
-	// asadRespId(
-	// 	'',
-	// 	'',
-	// 	"as_sb1",
-	// 	"xyz_as_sb1",
-	// 	ad_Id_resp,
-	// 	ad_Channel,
-	// 	"a"
-	// );
-	// 
-	//  both dtp & mob itempage and mainpage
-	var sideBysideLU = '<hr/><div style="margin:10px auto 20px"> <div class="row"><div class="col-sm-9"> <div id="as_lb1"></div> </div> <div class="col-sm-3"> <div id="as_lb2"></div> </div> </div> </div><hr/>';
+	//// STORE BOTH MAINPAGE+ITEMPAGE LINKU ON DTP SIDEBAR
+	var a = !detectmob() ? prependHTML('leftbar', '<div style="max-width:300px ; max-height:600px; min-height:100px; margin-bottom:10px;"><div id="as_sb1"></div></div>') : '';
+	asadRespId(
+		'<div style="text-align:center;width:90%;">',
+		'</div>',
+		"as_sb1",
+		"xyz_as_lb1",
+		lu_Id_resp,
+		lu_Channel,
+		"link"
+	);
+	//// STORE BOTH MAINPAGE+ITEMPAGE LINKU ON MOB
+	var sideBysideLU = detectmob() ? '<hr/><div style="margin:10px auto 20px"> <div class="row"><div class="col-sm-9"> <div id="as_lb1"></div> </div> <div class="col-sm-3"> <div id="as_lb2"></div> </div> </div> </div><hr/>' : '';
 	if (ThsBlg_pg == 'mainpage') {
 		insertAfterHTMLByClass('postbody', sideBysideLU);
 	}
 	if (ThsBlg_pg == 'itempage') {
 		insertBeforeHTMLByClass('blogger-labels', sideBysideLU);
 	}
-	// lu 1/2
 	asadRespId(
 		'<div style="text-align:center;width:90%;">',
 		'</div>',
