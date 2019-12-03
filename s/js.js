@@ -978,7 +978,6 @@ if (zdsite == "store") {
 	);
 	// 
 	//////////////////
-	/////////////////    STORE   ///////////////////
 	////////
 	function amazonCleanUrl(strURL, strTLD, strAffId) {
 		// v3 
@@ -987,9 +986,12 @@ if (zdsite == "store") {
 		} else {
 			var strAsin = strURL.match("/(?!/e|st)../([A-Z0-9]{10})")[1] || strURL;
 			//    return "https://www.amazon." + strTLD + "/exec/obidos/ASIN/" + strAsin + "/" + strAffId; /// old style
-			return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId; /// new    
+			// return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId; /// clean no params    
+			return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId + '&linkCode=osi&th=1&psc=1'; /// api v5 url
+
 		}
 	}
+	///// store jq /////
 	$(function() {
 		// ========= ALL =========
 		// 
