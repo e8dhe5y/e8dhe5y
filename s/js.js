@@ -282,6 +282,9 @@ function epnRs(gasID, country, kw, divId, cmpId, rand, numItems, rows, cols, ite
 	}
 	//////
 }
+
+
+
 // -- amzAdKW 1/3 (in main script)
 function amzAdKW(div, arr_amzNtv_sync_options) {
 	// v4
@@ -295,7 +298,7 @@ function amzAdKW(div, arr_amzNtv_sync_options) {
 		$('.iframeresize_class').iFrameResize();
 	});
 }
-
+// -- amzAdKW 1/3 (in main script)
 function amzNtv_sync(ad_mode, design, numRows, search_phrase, tracking_id, linkid, title, default_category) {
 	// v4
 	// ad_mode: "search"||"";
@@ -343,6 +346,10 @@ function amzFromLbls(keywords, div, type) {
 		"" // category (def: All)
 	]);
 }
+
+
+
+
 
 function affLocalize(objAmAffIds, strEPNId, strZzlId) {
 	// v5
@@ -724,10 +731,12 @@ function viewport(percentage, property) {
 }
 
 function addthisN(divId, url, title, template) {
-	/**
-	- V2 - 
+	/*
+	- V4 - 
+ 
 	*/
 	/// vars to set ///
+	var svgWH='width="16" height="16"'; // to prvnt ovrsize splsh b4 load
 	var emailPostfix = ""; // eg " - via mysite"
 	var pageImgUrl = "";
 	try {
@@ -746,12 +755,12 @@ function addthisN(divId, url, title, template) {
 		all_css.setAttribute("rel", "stylesheet");
 		all_css.setAttribute("type", "text/css");
 		document.getElementsByTagName("head")[0].appendChild(all_css);
-		if (document.getElementById('addthisNScript')) {
+		if (document.getElementById('addthis_RRSSBScript')) {
 			/////////////////////
 		} else {
 			var addthisScript = document.createElement('script');
 			addthisScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/rrssb/1.14.0/js/rrssb.min.js');
-			addthisScript.setAttribute('id', 'addthisNScript');
+			addthisScript.setAttribute('id', 'addthis_RRSSBScript');
 			document.body.appendChild(addthisScript);
 		}
 	}
@@ -759,34 +768,34 @@ function addthisN(divId, url, title, template) {
 	///// MODIFY VARIOUS VARS & CODE ABOVE AND BELOW IF ADDING!
 	var R_email_R = '  <li class="rrssb-email">' +
 		'    <a href="mailto:?Subject=' + title + ' ' + emailPostfix + '&body=' + url + '">' +
-		'      <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.386 2.614H2.614A2.345 2.345 0 0 0 .28 4.96L.27 19.04a2.353 2.353 0 0 0 2.345 2.346h18.77a2.354 2.354 0 0 0 2.348-2.347V4.96a2.356 2.356 0 0 0-2.347-2.346zm0 4.694L12 13.174 2.614 7.308V4.96L12 10.828l9.386-5.866V7.31z"/></svg></span>' +
+		'      <span class="rrssb-icon"><svg ' + svgWH + ' ' + svgWH + ' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.386 2.614H2.614A2.345 2.345 0 0 0 .28 4.96L.27 19.04a2.353 2.353 0 0 0 2.345 2.346h18.77a2.354 2.354 0 0 0 2.348-2.347V4.96a2.356 2.356 0 0 0-2.347-2.346zm0 4.694L12 13.174 2.614 7.308V4.96L12 10.828l9.386-5.866V7.31z"/></svg></span>' +
 		// '      <span class="rrssb-text"></span>' +
 		'    </a>' +
 		'  </li>';
 	var R_facebook_R = '  <li class="rrssb-facebook">' +
 		'    <a href="https://www.facebook.com/sharer/sharer.php?u=' + url + '" class="popup">' +
-		'      <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/></svg></span>' +
+		'      <span class="rrssb-icon"><svg ' + svgWH + ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/></svg></span>' +
 		// '      <span class="rrssb-text"></span>' +
 		'    </a>' +
 		'  </li>';
 	var R_twitter_R = '  <li class="rrssb-twitter">' +
 		'    <a href="https://twitter.com/intent/tweet?text=' + title + ' ' + url + '"' +
 		'    class="popup">' +
-		'      <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"/></svg></span>' +
+		'      <span class="rrssb-icon"><svg ' + svgWH + ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"/></svg></span>' +
 		// '      <span class="rrssb-text"></span>' +
 		'    </a>' +
 		'  </li>';
 	var R_pinterest_R = '  <li class="rrssb-pinterest">' +
 		'    <a href="https://pinterest.com/pin/create/button/?url=' + url + '&media=' + pageImgUrl + '&description=' + title + '"' +
 		'    class="popup">' +
-		'      <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M14.021 1.57C6.96 1.57 1.236 7.293 1.236 14.355S6.96 27.14 14.021 27.14s12.785-5.725 12.785-12.785C26.807 7.294 21.082 1.57 14.021 1.57zm1.24 17.085c-1.161-.09-1.649-.666-2.559-1.219-.501 2.626-1.113 5.145-2.925 6.458-.559-3.971.822-6.951 1.462-10.116-1.093-1.84.132-5.545 2.438-4.632 2.837 1.123-2.458 6.842 1.099 7.557 3.711.744 5.227-6.439 2.925-8.775-3.325-3.374-9.678-.077-8.897 4.754.19 1.178 1.408 1.538.489 3.168-2.128-.472-2.763-2.15-2.682-4.388.131-3.662 3.291-6.227 6.46-6.582 4.007-.448 7.771 1.474 8.29 5.239.579 4.255-1.816 8.865-6.102 8.533l.002.003z"/></svg></span>' +
+		'      <span class="rrssb-icon"><svg ' + svgWH + ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M14.021 1.57C6.96 1.57 1.236 7.293 1.236 14.355S6.96 27.14 14.021 27.14s12.785-5.725 12.785-12.785C26.807 7.294 21.082 1.57 14.021 1.57zm1.24 17.085c-1.161-.09-1.649-.666-2.559-1.219-.501 2.626-1.113 5.145-2.925 6.458-.559-3.971.822-6.951 1.462-10.116-1.093-1.84.132-5.545 2.438-4.632 2.837 1.123-2.458 6.842 1.099 7.557 3.711.744 5.227-6.439 2.925-8.775-3.325-3.374-9.678-.077-8.897 4.754.19 1.178 1.408 1.538.489 3.168-2.128-.472-2.763-2.15-2.682-4.388.131-3.662 3.291-6.227 6.46-6.582 4.007-.448 7.771 1.474 8.29 5.239.579 4.255-1.816 8.865-6.102 8.533l.002.003z"/></svg></span>' +
 		// '      <span class="rrssb-text"></span>' +
 		'    </a>' +
 		'  </li>';
 	var R_whatsapp_R = '  <li class="rrssb-whatsapp">' +
 		'    <a href="whatsapp://send?text=' + title + ' ' + url + '"' +
 		'    class="popup">' +
-		'      <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90"><path d="M90 43.841c0 24.213-19.779 43.841-44.182 43.841a44.256 44.256 0 0 1-21.357-5.455L0 90l7.975-23.522a43.38 43.38 0 0 1-6.34-22.637C1.635 19.628 21.416 0 45.818 0 70.223 0 90 19.628 90 43.841zM45.818 6.982c-20.484 0-37.146 16.535-37.146 36.859 0 8.065 2.629 15.534 7.076 21.61L11.107 79.14l14.275-4.537A37.122 37.122 0 0 0 45.819 80.7c20.481 0 37.146-16.533 37.146-36.857S66.301 6.982 45.818 6.982zm22.311 46.956c-.273-.447-.994-.717-2.076-1.254-1.084-.537-6.41-3.138-7.4-3.495-.993-.358-1.717-.538-2.438.537-.721 1.076-2.797 3.495-3.43 4.212-.632.719-1.263.809-2.347.271-1.082-.537-4.571-1.673-8.708-5.333-3.219-2.848-5.393-6.364-6.025-7.441-.631-1.075-.066-1.656.475-2.191.488-.482 1.084-1.255 1.625-1.882.543-.628.723-1.075 1.082-1.793.363-.717.182-1.344-.09-1.883-.27-.537-2.438-5.825-3.34-7.977-.902-2.15-1.803-1.792-2.436-1.792-.631 0-1.354-.09-2.076-.09s-1.896.269-2.889 1.344c-.992 1.076-3.789 3.676-3.789 8.963 0 5.288 3.879 10.397 4.422 11.113.541.716 7.49 11.92 18.5 16.223C58.2 65.771 58.2 64.336 60.186 64.156c1.984-.179 6.406-2.599 7.312-5.107.9-2.512.9-4.663.631-5.111z"/></svg></span>' +
+		'      <span class="rrssb-icon"><svg ' + svgWH + ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90"><path d="M90 43.841c0 24.213-19.779 43.841-44.182 43.841a44.256 44.256 0 0 1-21.357-5.455L0 90l7.975-23.522a43.38 43.38 0 0 1-6.34-22.637C1.635 19.628 21.416 0 45.818 0 70.223 0 90 19.628 90 43.841zM45.818 6.982c-20.484 0-37.146 16.535-37.146 36.859 0 8.065 2.629 15.534 7.076 21.61L11.107 79.14l14.275-4.537A37.122 37.122 0 0 0 45.819 80.7c20.481 0 37.146-16.533 37.146-36.857S66.301 6.982 45.818 6.982zm22.311 46.956c-.273-.447-.994-.717-2.076-1.254-1.084-.537-6.41-3.138-7.4-3.495-.993-.358-1.717-.538-2.438.537-.721 1.076-2.797 3.495-3.43 4.212-.632.719-1.263.809-2.347.271-1.082-.537-4.571-1.673-8.708-5.333-3.219-2.848-5.393-6.364-6.025-7.441-.631-1.075-.066-1.656.475-2.191.488-.482 1.084-1.255 1.625-1.882.543-.628.723-1.075 1.082-1.793.363-.717.182-1.344-.09-1.883-.27-.537-2.438-5.825-3.34-7.977-.902-2.15-1.803-1.792-2.436-1.792-.631 0-1.354-.09-2.076-.09s-1.896.269-2.889 1.344c-.992 1.076-3.789 3.676-3.789 8.963 0 5.288 3.879 10.397 4.422 11.113.541.716 7.49 11.92 18.5 16.223C58.2 65.771 58.2 64.336 60.186 64.156c1.984-.179 6.406-2.599 7.312-5.107.9-2.512.9-4.663.631-5.111z"/></svg></span>' +
 		// '      <span class="rrssb-text"></span>' +
 		'    </a>' +
 		'  </li>';
@@ -795,7 +804,9 @@ function addthisN(divId, url, title, template) {
 	//// 2ND NOW REMOVE UNNEEDED ONES!
 	final_buttons = final_buttons.replace("~<email>~", "").replace("~<facebook>~", "").replace("~<twitter>~", "").replace("~<pinterest>~", "").replace("~<whatsapp>~", "");
 	var rrssbHTML = '<ul class="rrssb-buttons clearfix">' + final_buttons + '</ul>';
-	document.getElementById(divId).insertAdjacentHTML("beforeend", rrssbHTML);
+	try {
+		document.getElementById(divId).insertAdjacentHTML("beforeend", rrssbHTML);
+	} catch (e) {}
 }
 
 function addthis_async_append(divId, customUrlTitle, url, title) {}
@@ -1094,6 +1105,7 @@ if (zdsite == "store") {
 /////////////////    DYN_CATCHER   ///////////////////
 // 
 if (zdsite == "dyn_catcher") {
+	// -- amzAdKW 1/3 (in main script)
 	if (qs.get("s") == "amz") {
 		var a = JSON.parse(decodeURIComponent(qs.get("a")));
 		amzNtv_sync(a[0], a[1], a[2], a[3], a[4], a[5], a[6]);
