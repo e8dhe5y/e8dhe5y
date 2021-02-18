@@ -70,6 +70,12 @@ document.getElementsByTagName('head')[0].insertAdjacentHTML("beforeend", '<style
 // 
 // 
 // ========== FUNCTIONS ==========
+function epn_rover2newURL(url, campid) {
+	//// v1 
+	var url = url.toString();
+	return "https://www.ebay.com/itm/" + url.match(/item\=([0-9]+)/im)[1] + "?mkrid=711-53200-19255-0&siteid=0&mkcid=1&campid=" + campid + "&toolid=10044&customid=&mkevt=1";
+}
+
 function detectmob() {
 	if (window.innerWidth <= 800) {
 		return true;
@@ -297,15 +303,15 @@ function epnRs(gasID, country, kw, divId, cmpId, rand, numItems, rows, cols, ite
 }
 // -- amzAdKW 1/3 (in main script)
 function amzAdKW(div, arr_amzNtv_sync_options) {
-	// v4
+	// v5
 	// req /c/ dynamic catcher, amzNtv_sync(), jq, iframeResizer.min.js
 	var arr_amzNtv_sync_options = encodeURIComponent(JSON.stringify(arr_amzNtv_sync_options));
 	$('#' + div).html(
 		'<iframe onload="iFrameResize()" class="iframeresize_class" style="display:block;width:99%" src="https://' + thsBlg_dyn_catcher + '?s=amz&a=' + arr_amzNtv_sync_options + '"  scrolling="no" frameborder="0" border="0" ></iframe>' +
 		''
 	);
-	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.14/iframeResizer.min.js").done(function() {
-		$('.iframeresize_class').iFrameResize();
+	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js").done(function() {
+		$('.iframeresize_class').iFrameResize(); // this may result in <Failed to execute ‘postMessage’> error but safe to ignore https://bit.ly/3jJHxGk
 	});
 }
 // -- amzAdKW 2/3 (in main script)
@@ -1110,15 +1116,25 @@ if (zdsite == "store") {
 		/// amz url clean
 		// *** CLEAN ALL AMZ API URLS to .com/dp/xxx?tag=yyy ***
 		$('.postbody a').each(function(index) {
-			var aurl = $(this).attr('href');
+			var aurl = $(this).attr('href').trim();
 			if (aurl.match(/(amazon\.|amzn\.)/igm)) {
 				var a = amazonCleanUrl(aurl, "com", thsBlg_amz.com);
 				$(this).attr('href', a);
 				// console.log(a);
 			}
 		});
-		//// amz url clean
-		// 
+		////
+		//// epn new "track urls" instead of rover
+		$('.postbody a').each(function(index) {
+			var aurl = $(this).attr('href').trim();
+			if (aurl.match(/rover\.ebay/im)) {
+				// console.log(aurl);
+				var a = epn_rover2newURL(aurl, thsBlg_epn) 
+				$(this).attr('href', a);
+				// console.log(a);
+			}
+		});
+		/////
 		// 
 		$('.postbody h3 a').each(function(index) {
 			$(this).html(' More Details &amp; Prices ');
@@ -1144,7 +1160,7 @@ if (zdsite == "dyn_catcher") {
 	if (qs.get("s") == "amz") {
 		var a = JSON.parse(decodeURIComponent(qs.get("a")));
 		amzNtv_sync(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
-		$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.14/iframeResizer.contentWindow.min.js")
+		$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js")
 			.done(function() {});
 	}
 }
@@ -1188,8 +1204,8 @@ $(window).on("load", function() {
 				epnFromLbls(kw, "ebRSBtm_2");
 			}
 			// ---/AFF FROM LABLES
-			$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.14/iframeResizer.min.js").done(function() {
-				$('.iframeresize_class').iFrameResize();
+			$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js").done(function() {
+				$('.iframeresize_class').iFrameResize(); // this may result in <Failed to execute ‘postMessage’> error but safe to ignore https://bit.ly/3jJHxGk
 			});
 		}
 		// 

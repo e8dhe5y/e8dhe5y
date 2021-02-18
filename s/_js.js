@@ -25,6 +25,10 @@ thsBlg_amz = {
 	'def_node': '', //'9003130011',
 	'def_node_2': '', //'9003130011',
 };
+thsBlg_as = '\x63' + 'a' + '-\x70\x75b-' + (2794188479492834 + 316041927154285 + 2579972706712602);
+var ad_Id_resp = '3045034240';
+var ad_Id_fixed = '4937952598';
+var lu_Id_resp = '4521767440';
 thsBlg_epn = "5337819815";
 thsBlg_zzl = "238115903514203736";
 thsBlg_dyn_catcher = "c.zedign.com/c/";
@@ -629,7 +633,7 @@ function asadRespId(prefix, postfix, divId, idTxt, slot, channel, orient, divWid
 				'<span class="ldng_16_3x" style="display:block;max-width:' + divWidth + ';max-height:' + divHeight + '">' +
 				' <ins class="adsbygoogle adslot_' + idTxt + '" ' +
 				' style="display:block" ' +
-				' data-ad-client="' + '\x63' + 'a' + '-\x70\x75b-' + (2794188479492834 + 316041927154285 + 2579972706712602) + '" ' +
+				' data-ad-client="' + thsBlg_as + '" ' +
 				' data-ad-slot="' + slot + '" ' +
 				' data-ad-format="' + a + '"></ins> ' +
 				'</span>' +
@@ -643,6 +647,28 @@ function asadRespId(prefix, postfix, divId, idTxt, slot, channel, orient, divWid
 		} catch (e) {
 			return true;
 		}
+	}
+}
+
+function asadFixId(prefix, postfix, divId, width, height, slot, channel) {
+	//v3 (span not div)
+	if (!document.getElementById(divId)) {
+		// 
+	} else {
+		document.getElementById(divId).innerHTML = '' +
+			prefix +
+			' <ins class="adsbygoogle" ' +
+			' style="display:inline-block;' +
+			' width:' + width + 'px;' +
+			' height:' + height + 'px" ' +
+			' data-ad-client="' + thsBlg_as + '" ' +
+			' data-ad-slot="' + slot + '"></ins>' +
+			postfix;
+		(adsbygoogle = window.adsbygoogle || []).push({
+				params: {
+					google_ad_channel: channel
+				}
+			});
 	}
 }
 
@@ -1020,8 +1046,6 @@ if (zdsite == "zdhome") {
 // 
 if (zdsite == "store") {
 	// zd resp a 3045034240, linku 4521767440
-	var ad_Id_resp = '3045034240';
-	var lu_Id_resp = '4521767440';
 	//// STORE CHANNELS
 	var ad_Channel = (ThsBlg_pg == 'mainpage') ? '8388720648' : '8388720648';
 	var lu_Channel = (ThsBlg_pg == 'mainpage') ? '2342187047' : '2342187047';
@@ -1042,6 +1066,17 @@ if (zdsite == "store") {
 		insertAfterHTMLByClass('postbody', sideBysideLU);
 	}
 	if (ThsBlg_pg == 'itempage') {
+		/////////// FIXED ON BOTH MOB+DTP 
+		insertAfterHTML('cse_container', '<div id="as_itmpgTop" style="width:300px;height:90px;margin:0 auto;"></div>');
+		asadFixId(
+			'',
+			'',
+			"as_itmpgTop",
+			"300",
+			"90",
+			ad_Id_fixed,
+			ad_Channel
+		);
 		//// todo amz urlclean
 		insertBeforeHTMLByClass('blogger-labels', sideBysideLU);
 	}
