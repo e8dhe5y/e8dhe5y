@@ -886,9 +886,9 @@ function amzSrchURL(affId, srchQry, categ) {
 }
 
 function epnSrchURL(campId, srchQry) {
-	// v1
+	// v2 
 	var a = srchQry.trim().replace(/\s+/igm, "+").trim();
-	return 'https://rover.ebay.com/rover/1/711-53200-19255-0/1?icep_ff3=9&pub=\x35\x35\x37\x35\x31\x35\x30\x38\x30\x38&toolid=10001&campid=' + campId + '&customid=&icep_uq=' + a + '&icep_sellerId=&icep_ex_kw=&icep_sortBy=12&icep_catId=&icep_minPrice=&icep_maxPrice=&ipn=psmain&icep_vectorid=229466&kwid=902099&mtid=824&kw=lg';
+	return 'https://www.ebay.com/sch/i.html?_ex_kw=&_mPrRngCbx=1&_nkw=' + a + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=' + campId + '&customid=&toolid=10001&mkevt=1';
 }
 // ========== /FUNCTIONS ==========
 // ========== EXEC ============
@@ -1129,7 +1129,7 @@ if (zdsite == "store") {
 			var aurl = $(this).attr('href').trim();
 			if (aurl.match(/rover\.ebay/im)) {
 				// console.log(aurl);
-				var a = epn_rover2newURL(aurl, thsBlg_epn) 
+				var a = epn_rover2newURL(aurl, thsBlg_epn)
 				$(this).attr('href', a);
 				// console.log(a);
 			}
