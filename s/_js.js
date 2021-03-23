@@ -157,6 +157,7 @@ function epnSmPl(divId, adID, kw = "", categ = "", divWidth = 300, divHeight = d
 }
 
 function epnFromLbls(keywords, div) {
+	/// kaput
 	// v6 -  gasJsnPrx
 	// insrts b4 lbls 4 epn rss itms using lbls txt
 	// REQ jq,epnRs,tablify
@@ -1197,11 +1198,11 @@ $(window).on("load", function() {
 			// console.log(kw);
 			if ($('.postbody h3 a').attr('href').match(/amazon\./)) {
 				kw = encodeURIComponent(kw.replace(/, /g, " ").trim());
-				epnFromLbls(kw, "ebRSBtm_1");
+				// epnFromLbls(kw, "ebRSBtm_1"); // kaput
 				amzFromLbls(kw, thsBlg_amz.def_cat_2, "grid", "ebRSBtm_2");
 			} else {
 				amzFromLbls(kw, thsBlg_amz.def_cat_2, "grid", "ebRSBtm_2");
-				epnFromLbls(kw, "ebRSBtm_2");
+				// epnFromLbls(kw, "ebRSBtm_2"); // kaput
 			}
 			// ---/AFF FROM LABLES
 			$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js").done(function() {
