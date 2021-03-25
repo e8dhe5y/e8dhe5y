@@ -1056,7 +1056,7 @@ if (zdsite == "store") {
 	var ad_Channel = (ThsBlg_pg == 'mainpage') ? '8388720648' : '8388720648';
 	var lu_Channel = (ThsBlg_pg == 'mainpage') ? '2342187047' : '2342187047';
 	//// STORE BOTH MAINPAGE+ITEMPAGE AD ON DTP SIDEBAR
-	// var a = !detectmob() ? prependHTML('leftbar', '<div id="asSideBar"></div>') : '';
+	var a = !detectmob() ? prependHTML('leftbar', '<div id="asSideBar"></div>') : '';
 	asadRespId(
 		'', // prefix
 		'', // postfix
