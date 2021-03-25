@@ -29,6 +29,7 @@ thsBlg_as = '\x63' + 'a' + '-\x70\x75b-' + (2794188479492834 + 316041927154285 +
 var ad_Id_resp = '3045034240';
 var ad_Id_fixed = '4937952598';
 var lu_Id_resp = '4521767440';
+var lu_Id_fixed = '7434720647'; /// zdgn_lu_fxd
 thsBlg_epn = "5337819815";
 thsBlg_zzl = "238115903514203736";
 thsBlg_dyn_catcher = "c.zedign.com/c/";
@@ -1076,7 +1077,7 @@ if (zdsite == "store") {
 		'',
 		'',
 		"asOnTop",
-		'300',
+		'320',
 		'50',
 		ad_Id_fixed,
 		ad_Channel
