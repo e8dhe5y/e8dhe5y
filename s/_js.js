@@ -598,6 +598,9 @@ function aead(divId, aid, akey, asize) {
 }
 ///// MODDED FOR AS_CD
 function asadRespId(prefix, postfix, divId, idTxt, slot, channel, orient, divWidth, divHeight) {
+	if (bnndQry == "yes") {
+		return;
+	}
 	// v11 - adFormat var
 	if (!document.getElementById(divId)) {
 		// 
