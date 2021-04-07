@@ -826,6 +826,12 @@ function epnSrchURL(campId, srchQry) {
 	var a = srchQry.trim().replace(/\s+/igm, "+").trim();
 	return 'https://www.ebay.com/sch/i.html?_ex_kw=&_mPrRngCbx=1&_nkw=' + a + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=' + campId + '&customid=&toolid=10001&mkevt=1';
 }
+
+function loadingDoneBar() {
+	///// v2 
+	//// req bootstrap
+	return '<div id="loadingDoneBar"> <div class="progress"> <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"> </div> </div> </div>';
+}
 // ========== /FUNCTIONS ==========
 // ========== EXEC ============
 // 
@@ -987,6 +993,7 @@ if (zdsite == "zdhome") {
 /////////////////    STORE   ///////////////////
 // 
 if (zdsite == "store") {
+	insertAfterHTML('jadeHeader', loadingDoneBar());
 	// zd resp a 3045034240, linku 4521767440
 	//// STORE CHANNELS
 	var ad_Channel = (ThsBlg_pg == 'mainpage') ? '8388720648' : '8388720648';
@@ -1149,7 +1156,9 @@ $(window).on("load", function() {
 			addthisN('addths_rec');
 		}
 	}
-	// 
+	/////
+	$('#loadingDoneBar').remove();
+	////
 }); /// window onload
 //
 // 

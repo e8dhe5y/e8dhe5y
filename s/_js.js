@@ -991,47 +991,19 @@ if (zdsite == "store") {
 	//// STORE CHANNELS
 	var ad_Channel = (ThsBlg_pg == 'mainpage') ? '8388720648' : '8388720648';
 	var lu_Channel = (ThsBlg_pg == 'mainpage') ? '2342187047' : '2342187047';
-	//// STORE BOTH MAINPAGE+ITEMPAGE AD ON DTP SIDEBAR
-	// var a = !detectmob() ? prependHTML('leftbar', '<div id="asSideBar"></div>') : '';
-	// asadRespId(
-	// 	'', // prefix
-	// 	'', // postfix
-	// 	"asSideBar", // div id
-	// 	"xyz_asSideBar", // xyz_ + div id
-	// 	ad_Id_resp, // slot
-	// 	ad_Channel, // channel
-	// 	'',
-	// 	'160px',
-	// 	'600px'
-	// );
 	//// STORE BOTH MAINPAGE+ITEMPAGE
-	// var asOnTop = detectmob() ? '<div id="asOnTop"></div>' : '';
-	// var asOnBottom = '<hr/><div id="asOnBottom"></div><hr/>';
-	// insertBeforeHTMLByClass('blogger-labels', asOnBottom);
-	// insertAfterHTML('cse_container', asOnTop);
-	// asadRespId(
-	// 	'', // prefix
-	// 	'', // postfix
-	// 	"asOnTop", // div id
-	// 	"xyz_asOnTop", // xyz_ + div id
-	// 	ad_Id_resp, // slot
-	// 	ad_Channel, // channel
-	// 	'', // orient OR ""
-	// 	"320px", // optional width eg "320px"
-	// 	"50px" // optional height eg "50px" (must if width)
-	// );
-	// //// ad mob+dtp
-	// asadRespId(
-	// 	'',
-	// 	'',
-	// 	"asOnBottom",
-	// 	"xyz_asOnBottom",
-	// 	ad_Id_resp,
-	// 	ad_Channel,
-	// 	'',
-	// 	'336px',
-	// 	'280px'
-	// );
+	insertAfterHTML('cse_container', '<div id="asOnTop"></div>');
+	asadRespId(
+		'', // prefix
+		'', // postfix
+		"asOnTop", // div id
+		"xyz_asOnTop", // xyz_ + div id
+		ad_Id_resp, // slot
+		ad_Channel, // channel
+		'', // orient OR ""
+		'320px',
+		'100px'
+	);
 	// 
 	//////////////////
 	////////
