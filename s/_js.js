@@ -1112,7 +1112,6 @@ $(window).on("load", function() {
 			var kw = $('.blogger-labels').text().replace(/\s+/igm, " ").trim().replace(/(labels\:)/igm, "").trim();
 			// console.log(kw);
 			if ($('.postbody h3 a').attr('href').match(/amazon\./)) {
-				kw = encodeURIComponent(kw.replace(/, /g, " ").trim());
 				epnFromLbls(kw, "ebRSBtm_1"); // kaput
 				amzFromLbls(kw, thsBlg_amz.def_cat_2, "grid", "ebRSBtm_2");
 			} else {
