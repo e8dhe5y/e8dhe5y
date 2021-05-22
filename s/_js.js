@@ -1074,6 +1074,7 @@ if (zdsite == "store") {
 if (zdsite == "dyn_catcher") {
 	// -- amzAdKW 1/3 (in main script)
 	if (qs.get("s") == "amz") {
+		$('head').append('<style>body a {color:blue!important;} .amzn-native-product-text {border-bottom:dotted 1px #aaa!important; margin-bottom:10px!important} .amzn-native-content li a {font-size:16px; line-height:1em} .amzn-native-product-offer-price{display:none!important}</style>');
 		var a = JSON.parse(decodeURIComponent(qs.get("a")));
 		amzNtv_sync(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
 		$.getScript("https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js")
