@@ -1,4 +1,4 @@
-/////  js for www only (wip del all store code aft 011222)  //////////////////
+///// store.zedign.com js  //////////////////
 // 
 // 
 // 
