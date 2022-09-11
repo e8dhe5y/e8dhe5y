@@ -37,6 +37,7 @@ thsBlg_dyn_catcher = "c.zedign.com/c/";
 thsBlg_img_cdn = "c.zedign.com/s/";
 thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
 thsBlg_ipsapi = '8c10c14fdd50fcaef4043f0982c95fb1'; // ipstack
+thsBlg_reportProductForm = '1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA'; // gd form
 // 
 if (typeof bnndQry === 'undefined') {
 	bnndQry = 'no';
@@ -837,159 +838,6 @@ function loadingDoneBar() {
 // 
 /////////////////    ZDHOME   ///////////////////
 // 
-if (zdsite == "zdhome") {
-	if (ThsBlg_pg == "homepage") {
-		// --- FUNCS
-		function appendHTMLByTag(firstTag, html) {
-			if (!document.getElementsByTagName(firstTag)[0]) {
-				//
-			} else {
-				document.getElementsByTagName(firstTag)[0].insertAdjacentHTML("beforeend", html);
-			}
-		}
-
-		function removejscssfile(filename, filetype) {
-			// e.g. removejscssfile("/z/style.css", "css"); //part of url
-			var targetelement = (filetype == "js") ? "script" : (filetype == "css") ? "link" : "none" //determine element type to create nodelist from
-			var targetattr = (filetype == "js") ? "src" : (filetype == "css") ? "href" : "none" //determine corresponding attribute to test for
-			var allsuspects = document.getElementsByTagName(targetelement)
-			for (var i = allsuspects.length; i >= 0; i--) { //search backwards within nodelist for matching elements to remove
-				if (allsuspects[i] && allsuspects[i].getAttribute(targetattr) != null && allsuspects[i].getAttribute(targetattr).indexOf(filename) != -1)
-					allsuspects[i].parentNode.removeChild(allsuspects[i]) //remove element by calling parentNode.removeChild()
-			}
-		}
-		// --- FUNCS
-		// === EXEC before
-		// remove blggr css
-		removejscssfile('3334278262-classic.css', 'css');
-		// bootstrap main css
-		appendHTMLByTag('head', '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">');
-		//
-		// DOWNGRADE IF CSS3 CALC NOT SUPPORTED...
-		/*! modernizr 3.3.1 (Custom Build) | MIT *
-		 * https://modernizr.com/download/?-csscalc-setclasses !*/
-		! function(e, n, s) {
-			function t(e, n) {
-				return typeof e === n
-			}
-
-			function o() {
-				var e, n, s, o, a, i, c;
-				for (var f in r)
-					if (r.hasOwnProperty(f)) {
-						if (e = [], n = r[f], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length))
-							for (s = 0; s < n.options.aliases.length; s++) e.push(n.options.aliases[s].toLowerCase());
-						for (o = t(n.fn, "function") ? n.fn() : n.fn, a = 0; a < e.length; a++) i = e[a], c = i.split("."), 1 === c.length ? Modernizr[c[0]] = o : (!Modernizr[c[0]] || Modernizr[c[0]] instanceof Boolean || (Modernizr[c[0]] = new Boolean(Modernizr[c[0]])), Modernizr[c[0]][c[1]] = o), l.push((o ? "" : "no-") + c.join("-"))
-					}
-			}
-
-			function a(e) {
-				var n = f.className,
-					s = Modernizr._config.classPrefix || "";
-				if (u && (n = n.baseVal), Modernizr._config.enableJSClass) {
-					var t = new RegExp("(^|\\s)" + s + "no-js(\\s|$)");
-					n = n.replace(t, "$1" + s + "js$2")
-				}
-				Modernizr._config.enableClasses && (n += " " + s + e.join(" " + s), u ? f.className.baseVal = n : f.className = n)
-			}
-
-			function i() {
-				return "function" != typeof n.createElement ? n.createElement(arguments[0]) : u ? n.createElementNS.call(n, "https://www.w3.org/2000/svg", arguments[0]) : n.createElement.apply(n, arguments)
-			}
-			var l = [],
-				r = [],
-				c = {
-					_version: "3.3.1",
-					_config: {
-						classPrefix: "",
-						enableClasses: !0,
-						enableJSClass: !0,
-						usePrefixes: !0
-					},
-					_q: [],
-					on: function(e, n) {
-						var s = this;
-						setTimeout(function() {
-							n(s[e])
-						}, 0)
-					},
-					addTest: function(e, n, s) {
-						r.push({
-							name: e,
-							fn: n,
-							options: s
-						})
-					},
-					addAsyncTest: function(e) {
-						r.push({
-							name: null,
-							fn: e
-						})
-					}
-				},
-				Modernizr = function() {};
-			Modernizr.prototype = c, Modernizr = new Modernizr;
-			var f = n.documentElement,
-				u = "svg" === f.nodeName.toLowerCase(),
-				p = c._config.usePrefixes ? " -webkit- -moz- -o- -ms- ".split(" ") : ["", ""];
-			c._prefixes = p, Modernizr.addTest("csscalc", function() {
-				var e = "width:",
-					n = "calc(10px);",
-					s = i("a");
-				return s.style.cssText = e + p.join(n + e), !!s.style.length
-			}), o(), a(l), delete c.addTest, delete c.addAsyncTest;
-			for (var m = 0; m < Modernizr._q.length; m++) Modernizr._q[m]();
-			e.Modernizr = Modernizr
-		}(window, document);
-		// if css3 calc not supported...
-		if (Modernizr.csscalc) {
-			// console.log('calc supported');
-		} else {
-			// DOWNGRADE
-			$('h1').after('<div id="downgrade"></div>');
-			$('#zdheader, #footer, #flares').removeClass('textliner');
-			$('#zdheader, #footer, #flares').addClass('downgraded_textliner');
-			$('#zdheader, #footer, #flares').removeAttr('id');
-			$('#downgrade').append($('.downgraded_textliner'));
-			$('.downgraded_textliner:eq(0)').attr("id", "downgraded_zdheader");
-			$('.downgraded_textliner:eq(1)').attr("id", "downgraded_footer");
-			$('.downgraded_textliner:eq(2)').attr("id", "downgraded_flares");
-			$('.textliner').remove();
-			$('#mainwrap').css({
-				'background': 'none',
-				'dummy': 'dummy'
-			});
-		}
-	}
-	// 
-	// 
-	if (ThsBlg_pg == "itempage") {
-		// ZDHOME DTP+MOB AD 1/1
-		// insertAfterHTMLByClass('addthis_B', '<div style="width:336px;height:280px;margin:10px auto 40px;"><div id="as_btm"></div></div>');
-		// asadRespId(
-		// 	'',
-		// 	'',
-		// 	"as_btm",
-		// 	"xyz_as_btm",
-		// 	'3045034240',
-		// 	'8736346943',
-		// 	"a"
-		// );
-	}
-	// ZDHOME DTP+MOB LU 1/1
-	// insertAfterHTML('prevlink', '<div style="width:200px;height:150px;margin:20px auto 40px;"><div id="as_lu_btm"></div></div>');
-	// asadRespId(
-	// 	'<div style="text-align:center">',
-	// 	'</div>',
-	// 	"as_lu_btm",
-	// 	"xyz_as_lu_btm",
-	// 	'4521767440',
-	// 	'0372900008',
-	// 	"link"
-	// );
-	// 
-	// 
-}
 /////////////////    STORE   ///////////////////
 // 
 if (zdsite == "store") {
@@ -1116,7 +964,7 @@ $(window).on("load", function() {
 				"amzSB_T");
 			// }
 			// ---AFF FROM LABLES
-			$('.blogger-labels').before('<hr/><h4>If you liked it, ALSO TRY:</h4><hr/><div  class="ldng_16_3x"  id="ebRSBtm_1"></div><hr/><div class="ldng_16_3x"  id="ebRSBtm_2"></div><hr/>');
+			$('.blogger-labels').before('<hr/><div style="text-align:right;margin: -18px 0;"><a style="font: normal 12px/1em Arial;" rel="nofollow" href="https://docs.google.com/forms/d/e/' + thsBlg_reportProductForm + '/viewform?usp=sf_link"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Report this item</a></div><div style="clear:both;"></div><hr/><h4>If you liked it, ALSO TRY:</h4><hr/><div  class="ldng_16_3x"  id="ebRSBtm_1"></div><hr/><div class="ldng_16_3x"  id="ebRSBtm_2"></div><hr/>');
 			var kw = $('.blogger-labels').text().replace(/\s+/igm, " ").trim().replace(/(labels\:)/igm, "").trim();
 			// console.log(kw);
 			try {
