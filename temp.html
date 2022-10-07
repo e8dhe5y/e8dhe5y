@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<title>temp</title>
+
+<h1>All Response Headers with XHR</h1>
+<script>
+ var X= new XMLHttpRequest();
+ X.open("HEAD", location);
+ X.send();
+ X.onload= function() { 
+   document.body.appendChild(document.createElement("pre")).textContent= X.getAllResponseHeaders();
+ }
+</script>
