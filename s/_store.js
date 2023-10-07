@@ -1008,6 +1008,12 @@ $(window).on("load", function() {
 				epnSmPl("epnSmPl_brknimg", thsBlg_epn_epnSmPl);
 				// 
 
+				//// EPN AD IF BRKN IMG
+				$('.panel-footer').remove();
+				$('#brknimg').after('<div id="epnSmPl_brknimg"></div>')
+				epnSmPl("epnSmPl_brknimg", thsBlg_epn_epnSmPl);
+				// 
+
 			}
 		});
 		/// HNDLE BRKN IMGS
