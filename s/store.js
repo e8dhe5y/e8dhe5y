@@ -1,4 +1,5 @@
-///// store.zedign.com js  //////////////////
+//  store.zedign.com 
+///// c.zedign.com/s/store.js  //////////////////
 // 
 // 
 // 
@@ -553,7 +554,11 @@ function aead(divId, aid, akey, asize) {
 	}
 }
 
-function asadRespId(prefix, postfix, divId, idTxt, slot, channel, orient, divWidth, divHeight) {
+// 2023-10-10 all manual AS off
+
+function asadRespId() {}
+
+function _asadRespId(prefix, postfix, divId, idTxt, slot, channel, orient, divWidth, divHeight) {
 	if (bnndQry == "yes") {
 		return;
 	}
