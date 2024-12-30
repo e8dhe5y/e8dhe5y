@@ -1,5 +1,6 @@
 body {
   font-family: Roboto, Arial, sans-serif;
+  line-height: 1.2em;
 }
 
 .container {
@@ -24,6 +25,7 @@ body {
 
 h1 {
   font-size: 1.75em;
+  line-height: 1.2em;
 }
 
 .postbody h2 {
