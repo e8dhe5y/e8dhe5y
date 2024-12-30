@@ -27,6 +27,19 @@ h1 {
   display: none;
 }
 
+.postheadline > h2 {
+  font-size: calc(14px + 1vw);
+  font-weight: bold;
+}
+
+.postbody, .postbody > h2 {
+  /*font-size: calc(9px + 1vw);*/
+}
+
+.postbody img {
+  max-width: 90%;
+}
+
 #cse_container {
   min-height: 40px;
 }
