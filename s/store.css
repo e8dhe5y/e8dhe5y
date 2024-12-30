@@ -1,3 +1,17 @@
+/*  === ZD SPECIFIC  ===  */
+
+#logoheader {
+  background: black;
+}
+
+#logoheader img {
+  filter: invert(1);
+}
+
+/*  === ZD SPECIFIC  ===  */
+
+/*  === COMMON ===  */
+
 body {
   font-family: Roboto, Arial, sans-serif;
   line-height: 1.2em;
@@ -5,7 +19,7 @@ body {
 
 .container {
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
   max-width: 800px;
 }
 
@@ -102,3 +116,5 @@ footer .well > p {
   font-size: 12px;
   line-height: 1em;
 }
+
+/*  === /COMMON ===  */
