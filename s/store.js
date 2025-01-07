@@ -834,27 +834,27 @@ function epnSrchURL(campId, srchQry) {
 	return 'https://www.ebay.com/sch/i.html?_ex_kw=&_mPrRngCbx=1&_nkw=' + a + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=' + campId + '&customid=&toolid=10001&mkevt=1';
 }
 
+function showLabels(json) {
+	var label = json.feed.category;
+	var list = $('<ul class="list-unstyled"></ul>');
+
+	for (var i = 0; i < label.length; i++) {
+		var listItem = $('<li></li>');
+		var link = $('<a></a>')
+			.attr('href', homepage + '/search/label/' + encodeURIComponent(label[i].term))
+			.text(label[i].term);
+		listItem.append(link);
+		list.append(listItem);
+	}
+
+	// Append the list to a specific element in your HTML
+	$('#allLabels').append(list);
+}
+
 function allBloggerLabels() {
-	// req jquery
+	// req jquery, showLabels()
 
 	var homepage = "https://" + thsBlg_dom;
-
-	function showLabels(json) {
-		var label = json.feed.category;
-		var list = $('<ul class="list-unstyled"></ul>');
-
-		for (var i = 0; i < label.length; i++) {
-			var listItem = $('<li></li>');
-			var link = $('<a></a>')
-				.attr('href', homepage + '/search/label/' + encodeURIComponent(label[i].term))
-				.text(label[i].term);
-			listItem.append(link);
-			list.append(listItem);
-		}
-
-		// Append the list to a specific element in your HTML
-		$('#allLabels').append(list);
-	}
 
 	// Load the JSON data
 	$.getScript(homepage + '/feeds/posts/summary?max-results=0&alt=json-in-script&callback=showLabels');
