@@ -34,6 +34,7 @@ var lu_Id_fixed = '7434720647'; /// zdgn_lu_fxd
 thsBlg_epn = "5337819815";
 thsBlg_epn_epnSmPl = "5cea98c1acd3bc52fe30de5b"; //// ad id of epn smrt plcmnt
 thsBlg_zzl = "238115903514203736";
+thsBlg_dom = "store.zedign.com";
 thsBlg_dyn_catcher = "c.zedign.com/c/";
 thsBlg_img_cdn = "c.zedign.com/s/";
 thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
@@ -833,10 +834,10 @@ function epnSrchURL(campId, srchQry) {
 	return 'https://www.ebay.com/sch/i.html?_ex_kw=&_mPrRngCbx=1&_nkw=' + a + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=' + campId + '&customid=&toolid=10001&mkevt=1';
 }
 
-function allLabels(homepage) {
+function allBloggerLabels() {
 	// req jquery
 
-	var homepage = "https://store.example.com";
+	var homepage = "https://" + thsBlg_dom;
 
 	function showLabels(json) {
 		var label = json.feed.category;
@@ -931,6 +932,7 @@ if (zdsite == "store") {
 		} catch (e) {}
 		// 
 		// 
+		allBloggerLabels();
 		// 
 	});
 }

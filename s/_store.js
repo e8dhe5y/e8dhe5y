@@ -833,11 +833,44 @@ function epnSrchURL(campId, srchQry) {
 	return 'https://www.ebay.com/sch/i.html?_ex_kw=&_mPrRngCbx=1&_nkw=' + a + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=' + campId + '&customid=&toolid=10001&mkevt=1';
 }
 
-function loadingDoneBar() {
-	///// v2 
-	//// req bootstrap
-	return '<div id="loadingDoneBar"> <div class="progress"> <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"> </div> </div> </div>';
+function allLabels(homepage) {
+	// req jquery
+
+	var homepage = "https://store.example.com";
+
+	function showLabels(json) {
+		var label = json.feed.category;
+		var list = $('<ul class="list-unstyled"></ul>');
+
+		for (var i = 0; i < label.length; i++) {
+			var listItem = $('<li></li>');
+			var link = $('<a></a>')
+				.attr('href', homepage + '/search/label/' + encodeURIComponent(label[i].term))
+				.text(label[i].term);
+			listItem.append(link);
+			list.append(listItem);
+		}
+
+		// Append the list to a specific element in your HTML
+		$('#allLabels').append(list);
+	}
+
+	// Load the JSON data
+	$.getScript(homepage + '/feeds/posts/summary?max-results=0&alt=json-in-script&callback=showLabels');
 }
+
+function amazonCleanUrl(strURL, strTLD, strAffId) {
+	// v4 
+	if (strURL.match("/(?!/e|st)../([A-Z0-9]{10})") === null) {
+		return strURL;
+	} else {
+		var strAsin = strURL.match("/(?!/e|st)../([A-Z0-9]{10})")[1] || strURL;
+		//    return "https://www.amazon." + strTLD + "/exec/obidos/ASIN/" + strAsin + "/" + strAffId; /// old style
+		// return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId; /// clean no params    
+		return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId + '&linkCode=osi&th=1&psc=1'; /// api v5 url
+	}
+}
+
 // ========== /FUNCTIONS ==========
 // ========== EXEC ============
 // 
@@ -846,38 +879,11 @@ function loadingDoneBar() {
 /////////////////    STORE   ///////////////////
 // 
 if (zdsite == "store") {
-	insertAfterHTML('jadeHeader', loadingDoneBar());
-	// zd resp a 3045034240, linku 4521767440
-	//// STORE CHANNELS
-	var ad_Channel = (ThsBlg_pg == 'mainpage') ? '8388720648' : '8388720648';
-	var lu_Channel = (ThsBlg_pg == 'mainpage') ? '2342187047' : '2342187047';
-	//// STORE BOTH MAINPAGE+ITEMPAGE
-	insertAfterHTML('cse_container', '<div id="asOnTop"></div>');
-	asadRespId(
-		'', // prefix
-		'', // postfix
-		"asOnTop", // div id
-		"xyz_asOnTop", // xyz_ + div id
-		ad_Id_resp, // slot
-		ad_Channel, // channel
-		'', // orient OR ""
-		'320px',
-		'100px'
-	);
+
 	// 
 	//////////////////
 	////////
-	function amazonCleanUrl(strURL, strTLD, strAffId) {
-		// v4 
-		if (strURL.match("/(?!/e|st)../([A-Z0-9]{10})") === null) {
-			return strURL;
-		} else {
-			var strAsin = strURL.match("/(?!/e|st)../([A-Z0-9]{10})")[1] || strURL;
-			//    return "https://www.amazon." + strTLD + "/exec/obidos/ASIN/" + strAsin + "/" + strAffId; /// old style
-			// return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId; /// clean no params    
-			return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId + '&linkCode=osi&th=1&psc=1'; /// api v5 url
-		}
-	}
+
 	///// store jq /////
 	$(function() {
 		// ========= ALL =========
@@ -910,18 +916,21 @@ if (zdsite == "store") {
 		/////
 		// 
 		try {
-			$('.postbody h3 a').each(function(index) {
-				$(this).html(' More Details &amp; Prices ');
-				$(this).addClass('btn btn-info');
+			$('.postbody h3').each(function(index) {
+				// $(this).html(' More Details &amp; Prices ');
+				$(this).remove();
+				// $(this).addClass('btn btn-info');
 			});
-			$('.postbody a:nth-child(6)').each(function(index) {
-				$(this).html(' Buy Now ');
+			$('.postbody a:nth-child(5)').each(function(index) {
+				$(this).html(' Price &amp; details &#9658; ');
 				$(this).addClass('btn btn-success');
+				$(this).attr({
+					'target': '_blank'
+				});
 			});
 		} catch (e) {}
 		// 
 		// 
-		$('#loadingDoneBar').remove();
 		// 
 	});
 }
@@ -977,7 +986,7 @@ $(window).on("load", function() {
 
 			<div style="text-align:right;">
 
-			<a style="font: normal 12px/1em Arial;" rel="nofollow" href="https://docs.google.com/forms/d/e/${thsBlg_reportProductForm}/viewform?usp=sf_link">
+			<a class="reportthis" rel="nofollow" href="https://docs.google.com/forms/d/e/${thsBlg_reportProductForm}/viewform?usp=sf_link">
 
 			<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Report this item
 			</a>
@@ -1050,7 +1059,6 @@ $(window).on("load", function() {
 		}
 	}
 	/////
-	$('#loadingDoneBar').remove();
 	////
 }); /// window onload
 //
