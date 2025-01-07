@@ -841,7 +841,7 @@ function showLabels(json) {
 	for (var i = 0; i < label.length; i++) {
 		var listItem = $('<li></li>');
 		var link = $('<a></a>')
-			.attr('href', homepage + '/search/label/' + encodeURIComponent(label[i].term))
+			.attr('href', "https://" + thsBlg_dom + '/search/label/' + encodeURIComponent(label[i].term))
 			.text(label[i].term);
 		listItem.append(link);
 		list.append(listItem);
@@ -854,10 +854,8 @@ function showLabels(json) {
 function allBloggerLabels() {
 	// req jquery, showLabels()
 
-	var homepage = "https://" + thsBlg_dom;
-
 	// Load the JSON data
-	$.getScript(homepage + '/feeds/posts/summary?max-results=0&alt=json-in-script&callback=showLabels');
+	$.getScript("https://" + thsBlg_dom + '/feeds/posts/summary?max-results=0&alt=json-in-script&callback=showLabels');
 }
 
 function amazonCleanUrl(strURL, strTLD, strAffId) {
