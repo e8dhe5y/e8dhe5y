@@ -1,9 +1,24 @@
-/*  === ZD SPECIFIC  ===  */
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+/*  === ZD SPECIFIC  ===  */
+
+html {
+  --main-font-family: Roboto, Arial, sans-serif;
+  --headline-font-family: "Roboto Condensed", sans-serif;
+  --logoheader-color: black;
+  --logoheader-links-color: #ddd;
+  --text-color: black;
+  --link-color: black;
+  --button-text-color: white;
+  --report-text-color: #555;
+  --pager-link-color: black;
+  --label-link-color: black;
+  --panel-background-color: #eee;
+  --image-background-color: #ccc;
+}
+
 #logoheader {
-  background: black;
+  background: var(--logoheader-color);
 }
 
 #logoheader img {
@@ -29,18 +44,16 @@
 
 /* COMMON */
 
-a {
-  color: #1a73e8;
-}
+a {}
 
 body {
-  font-family: Roboto, Arial, sans-serif;
+  font-family: var(--main-font-family);
   line-height: 1.2em;
   font-size: 12px;
 }
 
 h1, h2 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: var(--headline-font-family);
 }
 
 p {
@@ -56,15 +69,33 @@ p {
 
 #logoheader {
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-#logoheader > div {
+#logoheader div:first-of-type {
   height: 50px;
   overflow: hidden;
 }
 
+#logoheader div:last-of-type {
+  display: flex;
+  flex-grow: 1;
+  justify-content: end;
+}
+
+#logoheader div:last-of-type a {
+  color: var(--logoheader-links-color);
+  margin: 0 5px;
+  text-transform: uppercase;
+  font-size: calc(7px + 0.5vw);
+}
+
 #cse_container {
-  min-height: 50px;
+  height: 48px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .postbody h3 {
@@ -89,7 +120,7 @@ hr {
 }
 
 .panel * {
-  color: black;
+  color: var(--text-color);
   line-height: 1em;
   font-weight: normal;
   margin: 0;
@@ -102,12 +133,14 @@ hr {
   padding: 20px 10px;
   margin: 20px 0;
   border: solid 1px #aaa;
+  background: var(--panel-background-color);
 }
 
 .panel:last-of-type {
   /* pager container */
   border: none;
   box-shadow: none;
+  background: none;
 }
 
 .panel-body {
@@ -117,7 +150,7 @@ hr {
 
 .panel a {
   text-decoration: underline;
-  color: black;
+  color: var(--link-color);
 }
 
 .postheadline {
@@ -127,7 +160,8 @@ hr {
 }
 
 .postheadline h2 {
-  font-size: 14px;
+  /*font-size: 14px;*/
+  font-size: calc(10px + 1vw);
   margin: 0 10px 0 0;
 }
 
@@ -160,7 +194,9 @@ hr {
   width: 200px;
   overflow: hidden;
   padding: 5px;
-  background: #eee;
+  background: var(--image-background-color);
+  border-radius: 20px;
+  box-shadow: 0 0 20px #555 inset;
 }
 
 .postbody > a:nth-of-type(2) {
@@ -169,9 +205,15 @@ hr {
   display: table;
   width: fit-content; /* for chrome! */
   padding: 8px 15px;
-  color: white;
+  color: var(--button-text-color);
   text-decoration: none;
   border-radius: 20px;
+}
+
+.reportthis {
+  font-size: 7px;
+  text-transform: none !important;
+  color: var(--report-text-color) !important;
 }
 
 /* pager */
@@ -190,7 +232,7 @@ hr {
   background: #bbb;
   font-size: 18px;
   padding: 10px 30px;
-  color: black;
+  color: var(--pager-link-color);
   font-weight: bold;
   white-space: nowrap;
 }
@@ -228,7 +270,7 @@ hr {
   margin: 2px;
   background: #ccc;
   text-decoration: none;
-  color: black;
+  color: var(--label-link-color);
   border-radius: 20px;
   text-transform: uppercase;
   font-size: 11px;
@@ -242,7 +284,8 @@ hr {
 
 .bd_index h1 {
   line-height: 90%;
-  font-size: 26px;
+  /*font-size: 26px;*/
+  font-size: calc(16px + 1vw);
   text-align: center;
 }
 
