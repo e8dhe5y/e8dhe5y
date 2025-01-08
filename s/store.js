@@ -20,6 +20,8 @@ thsBlg_amz = {
 	'def_node_2': '', //'9003130011',
 };
 
+thsBlg_cse = "00\x32\x34\x31\x31\x38\x34\x39\x36144802\x34\x37\x37\x341:k1te0zxvmfo";
+thsBlg_cse_adchannel = "2728192243";
 thsBlg_epn = "5337819815";
 thsBlg_epn_epnSmPl = "5cea98c1acd3bc52fe30de5b"; //// ad id of epn smrt plcmnt
 thsBlg_zzl = "238115903514203736";
@@ -166,6 +168,20 @@ function amazonCleanUrl(strURL, strTLD, strAffId) {
 
 // -------- /AMZ/EPN FUNCS ----------
 
+function gCSE(cx) {
+
+	var gcse = document.createElement('script');
+	gcse.type = 'text/javascript';
+	gcse.async = true;
+	gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(gcse, s);
+
+	$('#cse_searchbox').append("<gcse:searchbox adchannel='000' queryParameterName='s'></gcse:searchbox>");
+	$('#cse_searchresults').append("<gcse:searchresults></gcse:searchresults>");
+}
+
 // ========== /FUNCTIONS ==========
 
 // 
@@ -187,6 +203,9 @@ function amazonCleanUrl(strURL, strTLD, strAffId) {
 
 $(function() {
 	// ========= ALL =========
+
+	gCSE(thsBlg_cse, thsBlg_cse_adchannel);
+
 	// 
 	/// amz url clean
 	// *** CLEAN ALL AMZ API URLS to .com/dp/xxx?tag=yyy ***

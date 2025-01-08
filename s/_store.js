@@ -36,7 +36,7 @@ function defunctAffRedir() {
 	try {
 		$('.postbody a').each(function(index) {
 			if ($(this).attr('href').match(/(.*arsmundi.*|.*saatchiart.*|.*society6.*)/)) {
-				if (ThsBlg_pg == 'itempage') {
+				if (thsBlg_pg == 'itempage') {
 					var sqry = $('h1').text().replace(/[^A-Za-z\s]/igm, "").trim().replace(/\s+/igm, "%20");
 				} else {
 					var sqry = "hot stuff";
