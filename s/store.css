@@ -20,9 +20,9 @@ html {
   --image-background-color: #ccc;
 }
 
-/*  === ZD SPECIFIC  ===  */
+/*  === /ZD SPECIFIC  ===  */
 
-/*  === COMMON ===  */
+/*  === ALL SAME COMMON ===  */
 
 /* BLGGR OVRRD */
 
@@ -36,8 +36,6 @@ html {
 }
 
 /* /BLGGR OVRRD */
-
-/* COMMON */
 
 a {}
 
@@ -200,7 +198,7 @@ hr {
 
 .postbody > a:nth-of-type(2) {
   /*buy now*/
-  background: #888;
+  background: var(--button-background-color);
   display: table;
   width: fit-content; /* for chrome! */
   padding: 8px 15px;
@@ -228,7 +226,7 @@ hr {
   text-decoration: none !important;
   display: table;
   width: fit-content; /* for chrome! */
-  background: #bbb;
+  background: VAR(--pager-background-color);
   font-size: 18px;
   padding: 10px 30px;
   color: var(--pager-link-color);
@@ -267,7 +265,7 @@ hr {
   width: fit-content; /* for chrome! */
   padding: 5px 10px;
   margin: 2px;
-  background: #ccc;
+  background: var(--label-background-color);
   text-decoration: none;
   color: var(--label-link-color);
   border-radius: 20px;
