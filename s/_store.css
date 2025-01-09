@@ -74,18 +74,18 @@ p {
   justify-content: flex-start;
 }
 
-#logoheader div:first-of-type {
+#logoheader #lh0 {
   height: 50px;
   overflow: hidden;
 }
 
-#logoheader div:last-of-type {
+#logoheader #lh1 {
   display: flex;
   flex-grow: 1;
   justify-content: end;
 }
 
-#logoheader div:last-of-type a {
+#logoheader #lh1 a {
   color: var(--logoheader-links-color);
   margin: 0 5px;
   text-transform: uppercase;
