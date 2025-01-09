@@ -31,6 +31,11 @@ thsBlg_img_cdn = "c.zedign.com/s/";
 thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
 thsBlg_ipsapi = '8c10c14fdd50fcaef4043f0982c95fb1'; // ipstack
 thsBlg_reportProductForm = '1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA'; // gd form
+thsBlg_ipsapi_menulinks = [
+// '<a href="#">Add your product</a>', 
+'<a href="https://art.zedign.com/">Fine Art</a>',
+'<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>'
+];
 
 // -------- ZD ONLY ---------
 
@@ -168,7 +173,7 @@ function amazonCleanUrl(strURL, strTLD, strAffId) {
 
 // -------- /AMZ/EPN FUNCS ----------
 
-function gCSE(cx) {
+function gCSE(cx, ch) {
 
 	var gcse = document.createElement('script');
 	gcse.type = 'text/javascript';
@@ -178,8 +183,15 @@ function gCSE(cx) {
 	var s = document.getElementsByTagName('script')[0];
 	s.parentNode.insertBefore(gcse, s);
 
-	$('#cse_searchbox').append("<gcse:searchbox adchannel='000' queryParameterName='s'></gcse:searchbox>");
+	$('#cse_searchbox').append("<gcse:searchbox adchannel='" + ch + "' queryParameterName='s'></gcse:searchbox>");
 	$('#cse_searchresults').append("<gcse:searchresults></gcse:searchresults>");
+}
+
+function menulinks() {
+	try {
+		var menulinks = thsBlg_ipsapi_menulinks.flat(Infinity).join(' ');
+		$('#logoheader').append('<div>' + menulinks + '</div>');
+	} catch (e) {}
 }
 
 // ========== /FUNCTIONS ==========
@@ -203,6 +215,8 @@ function gCSE(cx) {
 
 $(function() {
 	// ========= ALL =========
+
+	menulinks();
 
 	gCSE(thsBlg_cse, thsBlg_cse_adchannel);
 
@@ -258,7 +272,7 @@ $(function() {
 
 			<a class="reportthis" rel="nofollow" href="https://docs.google.com/forms/d/e/${thsBlg_reportProductForm}/viewform?usp=sf_link">
 
-			<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Report this item
+			<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Report Item
 			</a>
 			</div>
 

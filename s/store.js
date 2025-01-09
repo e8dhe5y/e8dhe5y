@@ -3,39 +3,31 @@
 
 // ====== ::WESBITE:: ONLY vars & funcs ============
 
-thsBlg_amz = {
-	// no empties!
-	'com': 'zdn-20',
-	'ca': 'dzng-20',
-	'co.uk': 'dzng-21',
-	'de': 'dnzg-21',
-	'fr': 'dnzgfr04-21',
-	'it': 'dnzgit-21',
-	'es': 'dnzges-21',
-	'def_kw': 'artisitc',
-	'def_kw_2': 'art',
-	'def_cat': 'All',
-	'def_cat_2': 'Books',
-	'def_node': '', //'9003130011',
-	'def_node_2': '', //'9003130011',
-};
+// thsBlg_amz = { 'com': 'zdn-20', 'ca': 'dzng-20', 'co.uk': 'dzng-21', 'de': 'dnzg-21', 'fr': 'dnzgfr04-21', 'it': 'dnzgit-21', 'es': 'dnzges-21', 'def_kw': 'artisitc', 'def_kw_2': 'art', 'def_cat': 'All', 'def_cat_2': 'Books', 'def_node': '', 'def_node_2': '', };
+// thsBlg_cse = "00\x32\x34\x31\x31\x38\x34\x39\x36144802\x34\x37\x37\x341:k1te0zxvmfo";
+// thsBlg_cse_adchannel = "2728192243";
+// thsBlg_epn = "5337819815";
+// thsBlg_epn_epnSmPl = "5cea98c1acd3bc52fe30de5b"; //// ad id of epn smrt plcmnt
+// thsBlg_zzl = "238115903514203736";
+// thsBlg_dom = "store.zedign.com";
+// thsBlg_dyn_catcher = "c.zedign.com/c/";
+// thsBlg_img_cdn = "c.zedign.com/s/";
+// thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
+// thsBlg_reportProductForm = '1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA';  
+// thsBlg_menulinks = [ '<a href="https://art.zedign.com/">Fine Art</a>', '<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>' ];
 
-thsBlg_cse = "00\x32\x34\x31\x31\x38\x34\x39\x36144802\x34\x37\x37\x341:k1te0zxvmfo";
-thsBlg_cse_adchannel = "2728192243";
-thsBlg_epn = "5337819815";
-thsBlg_epn_epnSmPl = "5cea98c1acd3bc52fe30de5b"; //// ad id of epn smrt plcmnt
-thsBlg_zzl = "238115903514203736";
-thsBlg_dom = "store.zedign.com";
-thsBlg_dyn_catcher = "c.zedign.com/c/";
-thsBlg_img_cdn = "c.zedign.com/s/";
-thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
-thsBlg_ipsapi = '8c10c14fdd50fcaef4043f0982c95fb1'; // ipstack
-thsBlg_reportProductForm = '1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA'; // gd form
-thsBlg_ipsapi_menulinks = [
-// '<a href="#">Add your product</a>', 
-'<a href="https://art.zedign.com/">Fine Art</a>',
-'<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>'
-];
+thsBlg_amz = { 'com': 'zdn-20', 'ca': 'dzng-20', 'co.uk': 'dzng-21', 'de': 'dnzg-21', 'fr': 'dnzgfr04-21', 'it': 'dnzgit-21', 'es': 'dnzges-21', 'def_kw': 'artisitc', 'def_kw_2': 'art', 'def_cat': 'All', 'def_cat_2': 'Books', 'def_node': '', 'def_node_2': '', } ; 
+thsBlg_cse = "00\x32\x34\x31\x31\x38\x34\x39\x36144802\x34\x37\x37\x341:k1te0zxvmfo" ; 
+thsBlg_cse_adchannel = "2728192243" ; 
+thsBlg_epn = "5337819815" ; 
+thsBlg_epn_epnSmPl = "5cea98c1acd3bc52fe30de5b"; //// ad id of epn smrt plcmnt ; 
+thsBlg_zzl = "238115903514203736" ; 
+thsBlg_dom = "store.zedign.com" ; 
+thsBlg_dyn_catcher = "c.zedign.com/c/" ; 
+thsBlg_img_cdn = "c.zedign.com/s/" ; 
+thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc" ; 
+thsBlg_reportProductForm = "1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA" ; 
+thsBlg_menulinks = [ '<a href="https://art.zedign.com/">Fine Art</a>', '<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>' ] ; 
 
 // -------- ZD ONLY ---------
 
@@ -189,8 +181,8 @@ function gCSE(cx, ch) {
 
 function menulinks() {
 	try {
-		var menulinks = thsBlg_ipsapi_menulinks.flat(Infinity).join(' ');
-		$('#logoheader').append('<div>' + menulinks + '</div>');
+		var menulinks = thsBlg_menulinks.flat(Infinity).join(' ');
+		$('#logoheader').append('<div id="lh1">' + menulinks + '</div>');
 	} catch (e) {}
 }
 
