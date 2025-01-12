@@ -1,35 +1,40 @@
 //  store.zedign.com 
 ///// c.zedign.com/s/store.js  //////////////////
 
-// ====== ::WESBITE:: ONLY vars & funcs ============
+// ====== ::WESBITE:: ONLY ============
 
-// thsBlg_amz = { 'com': 'zdn-20', 'ca': 'dzng-20', 'co.uk': 'dzng-21', 'de': 'dnzg-21', 'fr': 'dnzgfr04-21', 'it': 'dnzgit-21', 'es': 'dnzges-21', 'def_kw': 'artisitc', 'def_kw_2': 'art', 'def_cat': 'All', 'def_cat_2': 'Books', 'def_node': '', 'def_node_2': '', };
-// thsBlg_cse = "00\x32\x34\x31\x31\x38\x34\x39\x36144802\x34\x37\x37\x341:k1te0zxvmfo";
-// thsBlg_cse_adchannel = "2728192243";
-// thsBlg_epn = "5337819815";
-// thsBlg_epn_epnSmPl = "5cea98c1acd3bc52fe30de5b"; //// ad id of epn smrt plcmnt
-// thsBlg_zzl = "238115903514203736";
-// thsBlg_dom = "store.zedign.com";
-// thsBlg_dyn_catcher = "c.zedign.com/c/";
-// thsBlg_img_cdn = "c.zedign.com/s/";
-// thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
-// thsBlg_reportProductForm = '1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA';  
-// thsBlg_menulinks = [ '<a href="https://art.zedign.com/">Fine Art</a>', '<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>' ];
+// -------- ZD ONLY VARS ---------
 
-thsBlg_amz = { 'com': 'zdn-20', 'ca': 'dzng-20', 'co.uk': 'dzng-21', 'de': 'dnzg-21', 'fr': 'dnzgfr04-21', 'it': 'dnzgit-21', 'es': 'dnzges-21', 'def_kw': 'artisitc', 'def_kw_2': 'art', 'def_cat': 'All', 'def_cat_2': 'Books', 'def_node': '', 'def_node_2': '', } ; 
-thsBlg_cse = "00\x32\x34\x31\x31\x38\x34\x39\x36144802\x34\x37\x37\x341:k1te0zxvmfo" ; 
-thsBlg_cse_adchannel = "2728192243" ; 
-thsBlg_epn = "5337819815" ; 
+thsBlg_dom = "store.zedign.com";
+thsBlg_amz = {
+	'com': 'zdn-20',
+	'ca': 'dzng-20',
+	'co.uk': 'dzng-21',
+	'de': 'dnzg-21',
+	'fr': 'dnzgfr04-21',
+	'it': 'dnzgit-21',
+	'es': 'dnzges-21',
+	'def_kw': 'artisitc',
+	'def_kw_2': 'art',
+	'def_cat': 'All',
+	'def_cat_2': 'Books',
+	'def_node': '',
+	'def_node_2': '',
+};
+thsBlg_cse = "00\x32\x34\x31\x31\x38\x34\x39\x36144802\x34\x37\x37\x341:k1te0zxvmfo";
+thsBlg_cse_adchannel = "2728192243";
+thsBlg_epn = "5337819815";
 thsBlg_epn_epnSmPl = "5cea98c1acd3bc52fe30de5b"; //// ad id of epn smrt plcmnt ; 
-thsBlg_zzl = "238115903514203736" ; 
-thsBlg_dom = "store.zedign.com" ; 
-thsBlg_dyn_catcher = "c.zedign.com/c/" ; 
-thsBlg_img_cdn = "c.zedign.com/s/" ; 
-thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc" ; 
-thsBlg_reportProductForm = "1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA" ; 
-thsBlg_menulinks = [ '<a href="https://art.zedign.com/">Fine Art</a>', '<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>' ] ; 
+thsBlg_zzl = "238115903514203736";
+thsBlg_dyn_catcher = "c.zedign.com/c/";
+thsBlg_img_cdn = "c.zedign.com/s/";
+thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
+thsBlg_reportProductForm = "1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA";
+thsBlg_menulinks = ['<a href="https://art.zedign.com/">Fine Art</a>', '<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>'];
 
-// -------- ZD ONLY ---------
+// -------- /ZD ONLY VARS ---------
+
+// -------- ZD ONLY FUNCS ---------
 
 function defunctAffRedir() {
 	try {
@@ -52,7 +57,9 @@ function defunctAffRedir() {
 }
 defunctAffRedir();
 
-// ====== ::WESBITE:: ONLY vars & funcs ============
+// -------- /ZD ONLY FUNCS ---------
+
+// ====== ::WESBITE:: ONLY  ============
 
 // 
 // 
@@ -161,6 +168,205 @@ function amazonCleanUrl(strURL, strTLD, strAffId) {
 		// return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId; /// clean no params    
 		return "https://www.amazon." + strTLD + "/dp/" + strAsin + "?tag=" + strAffId + '&linkCode=osi&th=1&psc=1'; /// api v5 url
 	}
+}
+
+function affLocalize(objAmAffIds, strEPNId, strZzlId) {
+	// v6
+	// req: jq
+	function zzlLocalize(strTLD, url) {
+		if (strTLD) {
+			switch (strTLD) {
+				case 'UK':
+				case 'JP':
+				case 'NZ':
+					strTLD = 'co.' + strTLD;
+					break;
+				case 'AU':
+				case 'BR':
+					strTLD = 'com.' + strTLD;
+					break;
+				case 'CA':
+				case 'DE':
+				case 'ES':
+				case 'FR':
+				case 'PT':
+				case 'SE':
+				case 'NL':
+				case 'AT':
+				case 'CH':
+				case 'BE':
+					strTLD = strTLD;
+					break;
+				default:
+					strTLD = 'com';
+			}
+		}
+		var affUrl, zProd, zAffTag;
+		zProd = parseURL(url.replace(/[\?\&]rf\=[0-9]+/, ""));
+		affUrl = 'https://www.zazzle.' + strTLD + zProd.path + zProd.querystring;
+		zAffTag = (affUrl.match(/\?/) ? '&rf=' : '?rf=') + strZzlId;
+		affUrl = affUrl + zAffTag;
+		return affUrl;
+	}
+
+	function ebLocalize(strTLD, url) {
+		if (strTLD) {
+			switch (strTLD) {
+				case 'AT':
+					cntry = "5221-53469-19255-0";
+					icep = "229473";
+					break;
+				case 'AU':
+					cntry = "705-53470-19255-0";
+					icep = "229515";
+					break;
+				case 'BE':
+					cntry = "1553-53471-19255-0";
+					icep = "229522";
+					break;
+				case 'CA':
+					cntry = "706-53473-19255-0";
+					icep = "229529";
+					break;
+				case 'CH':
+					cntry = "5222-53480-19255-0";
+					icep = "229536";
+					break;
+				case 'DE':
+					cntry = "707-53477-19255-0";
+					icep = "229487";
+					break;
+				case 'ES':
+					cntry = "1185-53479-19255-0";
+					icep = "229501";
+					break;
+				case 'FR':
+					cntry = "709-53476-19255-0";
+					icep = "229480";
+					break;
+				case 'IE':
+					cntry = "5282-53468-19255-0";
+					icep = "229543";
+					break;
+				case 'IN':
+					cntry = "4686-53472-19255-0";
+					icep = "229550";
+					break;
+				case 'IT':
+					cntry = "724-53478-19255-0";
+					icep = "229494";
+					break;
+				case 'NL':
+					cntry = "1346-53482-19255-0";
+					icep = "229557";
+					break;
+				case 'UK':
+					cntry = "710-53481-19255-0";
+					icep = "229508";
+					break;
+				default:
+					cntry = "711-53200-19255-0";
+					icep = "229466";
+			}
+		}
+		var affUrl = url;
+		affUrl = affUrl.replace(/\/[0-9]+\-[0-9]+\-19255\-0\//, '/' + cntry + '/');
+		affUrl = affUrl.replace(/vectorid\=[0-9]+/, 'icep_vectorid=' + icep);
+		// console.log(affUrl)
+		return affUrl;
+	}
+	// 
+	function amLocalize(itmId, strTLD) {
+		if (strTLD) {
+			switch (strTLD) {
+				case 'JP':
+					strTLD = 'co.jp';
+					break;
+				case 'GB':
+				case 'JE':
+				case 'GG':
+				case 'IM':
+				case 'IE':
+				case 'UK':
+					strTLD = 'co.uk';
+					break;
+				case 'CH':
+				case 'AT':
+					strTLD = 'de';
+					break;
+				case 'PT':
+					strTLD = 'es';
+					break;
+				default:
+					strTLD = (objAmAffIds[strTLD.toLowerCase()] != null ? strTLD.toLowerCase() : 'com');
+					break;
+			}
+			affId = objAmAffIds[strTLD.toLowerCase()];
+		}
+		// OneLink Mod  DEL IF NOT USING OneLink <script> in html
+		strTLD = (strTLD == 'ca' || strTLD == 'co.uk') ? "com" : strTLD;
+		affId = thsBlg_amz.com; ///// default US tag for this site
+		// /OneLink Mod
+		return "https://www.amazon." + strTLD + "/exec/obidos/ASIN/" + itmId + "/" + affId;
+	}
+	// 
+	function parseURL(href) {
+		// v1 returns url parths as given. works with relative ones too.
+		var match = href.match(/^(?:(https?\:)\/\/)?(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/);
+		return match && {
+			href: href,
+			protocol: match[1],
+			host: match[2],
+			hostname: match[3],
+			port: match[4],
+			path: match[5],
+			querystring: match[6],
+			hash: match[7]
+		}
+	}
+	// 
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		cache: true,
+		///// geoip chunk 3/4
+		// url: "https://freegeoip.app/json/" // new 11/18
+		url: "https://ipapi.co/json/" // new 11/18
+	}).done(function(json) {
+		try {
+			///// geoip chunk 4/4
+			var strTLD = json.country || ''; // for freegeoip.app
+
+			// console.log(strTLD);
+
+			var zzlUrlReg = /zazzle\./;
+			var epnUrlReg = /vectorid/;
+			var amzUrlReg = RegExp("/([a-zA-Z0-9]{10})(?:[/?]|$)");
+			// var amzUrlReg = RegExp("/(?!/e|st)../([A-Z0-9]{10})");
+			// "/(?!/e|st)../([A-Z0-9]{10})"
+			$('a').each(function(index) {
+				var url = unescape($(this).attr('href'));
+				// AMZ
+				if (url.match(amzUrlReg)) {
+					var itmId = url.match(amzUrlReg)[1];
+					// console.log(itmId)
+					// amLocalize is OFF (USING ONELINK) (uncommnt to enable)
+					// $(this).attr('href', amLocalize(itmId, strTLD));
+				}
+				// EPN
+				if (url.match(epnUrlReg)) {
+					$(this).attr('href', ebLocalize(strTLD, url));
+				}
+				// ZZL
+				if (url.match(zzlUrlReg)) {
+					$(this).attr('href', zzlLocalize(strTLD, url));
+				}
+			});
+			// 
+		} catch (e) {}
+	}).fail(function(error) {
+		// console.log(error);
+	});
 }
 
 // -------- /AMZ/EPN FUNCS ----------
@@ -278,6 +484,11 @@ $(function() {
 // ============== ALL LAST --- WINDOW ON LOAD ===================
 
 $(window).on("load", function() {
+
+	if (thsBlg_pg == "itempage") {
+		// amLocalize is off using onelink through amz dashboard, no js req
+		affLocalize(thsBlg_amz, thsBlg_epn, thsBlg_zzl);
+	}
 
 	handleBrokenImages();
 
