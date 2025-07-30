@@ -30,7 +30,12 @@ thsBlg_dyn_catcher = "c.zedign.com/c/";
 thsBlg_img_cdn = "c.zedign.com/s/";
 thsBlg_gasJsnPrx = "AKfycbwu10Uml2V4z_UuV8RhWb2I6JVc0QAylXsh7VsojIHCmvO6Pwc";
 thsBlg_reportProductForm = "1FAIpQLSe59VsY0gwDggmP6Lgp3h1gh9O0l1p6aZjgP74HbD5jQmR-vA";
-thsBlg_menulinks = ['<a href="https://art.zedign.com/">Fine Art</a>', '<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>'];
+thsBlg_menulinks = [
+'<a style="text-align:center; background: #555; padding: 3px 5px; color: white; border-radius: 30px; text-decoration: none;" href="https://store.zedign.com/p/post.html"><b style="font-size:150%;line-height:100%">+</b> <span>POST YOUR PRODUCT</span></a>', 
+'<a href="https://art.zedign.com/">Fine Art</a>', 
+'<a href="https://3d.zedign.com"> &nbsp; 3D &nbsp; </a>'
+
+];
 
 // -------- /ZD ONLY VARS ---------
 
