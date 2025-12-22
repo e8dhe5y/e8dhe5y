@@ -447,46 +447,40 @@ function menulinks() {
 // }
 
 function navPrevNexTitle(config) {
-	// Helper function to turn slug (my-post.html) into title (My Post)
-	var getPseudoTitle = function(url) {
-		var slug = url.split('/').pop().split('.')[0]; // Get 'my-post-title'
-		return slug.replace(/-/g, ' ').replace(/\b\w/g, function(l) {
-			return l.toUpperCase();
-		});
-	};
+	// 1. Get current page info for comparison
+	var currentUrl = window.location.href.split(/[?#]/)[0];
+	var currentPageTitle = document.title.split(/[:|]/)[0].trim();
 
 	config.forEach(function(item) {
 		var linkEl = document.getElementById(item.id);
 		if (!linkEl || !linkEl.href) return;
 
-		var path = linkEl.href.split(/[?#]/)[0].replace(/.*\/\/[^\/]*/, '');
+		var cleanLinkUrl = linkEl.href.split(/[?#]/)[0];
+
+		// 2. FALLBACK: If link points to current page, stop here and keep hardcoded text
+		if (cleanLinkUrl === currentUrl) return;
+
+		var path = cleanLinkUrl.replace(/.*\/\/[^\/]*/, '');
 		var callbackName = "cb_" + item.id.replace(/[^a-zA-Z0-9]/g, "_");
 
 		window[callbackName] = function(data) {
-			var finalTitle = "";
+			try {
+				if (data.feed.entry && data.feed.entry.length > 0) {
+					var fetchedTitle = data.feed.entry[0].title.$t;
 
-			// Check if we got a valid title from the feed
-			if (data.feed.entry && data.feed.entry.length > 0) {
-				var fetchedTitle = data.feed.entry[0].title.$t;
-				// If fetching 'prev' and it accidentally grabs current page title, use slug instead
-				if (item.type === 'prev' && document.title.indexOf(fetchedTitle) > -1) {
-					finalTitle = getPseudoTitle(linkEl.href);
-				} else {
-					finalTitle = fetchedTitle;
-				}
-			} else {
-				// Total API fail fallback
-				finalTitle = getPseudoTitle(linkEl.href);
-			}
+					// 3. ONLY update if fetched title is valid and NOT the current post
+					if (fetchedTitle && fetchedTitle.trim() !== currentPageTitle) {
+						linkEl.setAttribute('title', fetchedTitle);
 
-			// Apply the title
-			if (finalTitle) {
-				linkEl.setAttribute('title', finalTitle);
-				if (item.type === 'prev') {
-					linkEl.innerHTML = "&#9665; " + finalTitle;
-				} else {
-					linkEl.innerHTML = finalTitle + " &#9655;";
+						if (item.type === 'prev') {
+							linkEl.innerHTML = "&#9665; " + fetchedTitle;
+						} else {
+							linkEl.innerHTML = fetchedTitle + " &#9655;";
+						}
+					}
 				}
+			} catch (e) {
+				// If error, do nothing: hardcoded "Prev/Next" remains
 			}
 			delete window[callbackName];
 		};
