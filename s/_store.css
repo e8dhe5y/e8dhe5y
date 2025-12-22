@@ -20,6 +20,11 @@ html {
   --image-background-color: #ccc;
 }
 
+body[data-url*="post.html"] .reportthis,
+body[data-url*="post.html"] footer {
+  display: none !important;
+}
+
 /*  === /ZD SPECIFIC  ===  */
 
 /*  === ALL SAME COMMON ===  */

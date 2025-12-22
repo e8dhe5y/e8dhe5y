@@ -537,7 +537,7 @@ $(function() {
 	try {
 
 		window.addEventListener('load', function() {
-			PrevNextTitles([{
+			navPrevNexTitle([{
 				id: 'Blog1_blog-pager-newer-link',
 				type: 'prev'
 			}, {
