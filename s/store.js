@@ -421,11 +421,14 @@ function navPrevNexTitle(config) {
 		var linkEl = document.getElementById(item.id);
 		if (!linkEl || !linkEl.href) return;
 
-		var path = linkEl.href.split(/[?#]/)[0].replace(/.*\/\/[^\/]*/, '');
+		// Use the full URL but strip parameters like ?m=1 for the search query
+		var cleanUrl = linkEl.href.split(/[?#]/)[0];
 		var callbackName = "cb_" + item.id.replace(/[^a-zA-Z0-9]/g, "_");
 
 		window[callbackName] = function(data) {
 			if (data.feed.entry && data.feed.entry.length > 0) {
+				// The search query might return multiple if URLs are similar, 
+				// but entry[0] will be the closest match.
 				var postTitle = data.feed.entry[0].title.$t;
 
 				linkEl.setAttribute('title', postTitle);
@@ -440,8 +443,9 @@ function navPrevNexTitle(config) {
 		};
 
 		var script = document.createElement('script');
-		script.src = "/feeds/posts/summary?alt=json-in-script&path=" +
-			encodeURIComponent(path) + "&callback=" + callbackName;
+		// Switched from path= to q=url: for better precision
+		script.src = "/feeds/posts/summary?alt=json-in-script&q=url:" +
+			encodeURIComponent(cleanUrl) + "&callback=" + callbackName;
 		document.body.appendChild(script);
 	});
 }
