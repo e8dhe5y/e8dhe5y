@@ -416,72 +416,30 @@ function menulinks() {
 	} catch (e) {}
 }
 
-// function navPrevNexTitle(config) {
-// 	config.forEach(function(item) {
-// 		var linkEl = document.getElementById(item.id);
-// 		if (!linkEl || !linkEl.href) return;
-
-// 		var path = linkEl.href.split(/[?#]/)[0].replace(/.*\/\/[^\/]*/, '');
-// 		var callbackName = "cb_" + item.id.replace(/[^a-zA-Z0-9]/g, "_");
-
-// 		window[callbackName] = function(data) {
-// 			if (data.feed.entry && data.feed.entry.length > 0) {
-// 				var postTitle = data.feed.entry[0].title.$t;
-
-// 				linkEl.setAttribute('title', postTitle);
-
-// 				if (item.type === 'prev') {
-// 					linkEl.innerHTML = "&#9665; " + postTitle;
-// 				} else {
-// 					linkEl.innerHTML = postTitle + " &#9655;";
-// 				}
-// 			}
-// 			delete window[callbackName];
-// 		};
-
-// 		var script = document.createElement('script');
-// 		script.src = "/feeds/posts/summary?alt=json-in-script&path=" +
-// 			encodeURIComponent(path) + "&callback=" + callbackName;
-// 		document.body.appendChild(script);
-// 	});
-// }
-
 function navPrevNexTitle(config) {
-	// Get the current page title to compare against
-	var currentPageTitle = document.title.split(/[:|]/)[0].trim();
-
 	config.forEach(function(item) {
 		var linkEl = document.getElementById(item.id);
 		if (!linkEl || !linkEl.href) return;
 
-		// Clean the URL for the search path
 		var path = linkEl.href.split(/[?#]/)[0].replace(/.*\/\/[^\/]*/, '');
 		var callbackName = "cb_" + item.id.replace(/[^a-zA-Z0-9]/g, "_");
 
 		window[callbackName] = function(data) {
-			try {
-				if (data.feed.entry && data.feed.entry.length > 0) {
-					var fetchedTitle = data.feed.entry[0].title.$t;
+			if (data.feed.entry && data.feed.entry.length > 0) {
+				var postTitle = data.feed.entry[0].title.$t;
 
-					// Only update if the fetched title is NOT the current page title
-					// and NOT empty
-					if (fetchedTitle && fetchedTitle.trim() !== currentPageTitle) {
-						linkEl.setAttribute('title', fetchedTitle);
-						if (item.type === 'prev') {
-							linkEl.innerHTML = "&#9665; " + fetchedTitle;
-						} else {
-							linkEl.innerHTML = fetchedTitle + " &#9655;";
-						}
-					}
+				linkEl.setAttribute('title', postTitle);
+
+				if (item.type === 'prev') {
+					linkEl.innerHTML = "&#9665; " + postTitle;
+				} else {
+					linkEl.innerHTML = postTitle + " &#9655;";
 				}
-			} catch (e) {
-				console.log("Nav title fetch failed, keeping defaults.");
 			}
 			delete window[callbackName];
 		};
 
 		var script = document.createElement('script');
-		// Using path= which is the most widely supported
 		script.src = "/feeds/posts/summary?alt=json-in-script&path=" +
 			encodeURIComponent(path) + "&callback=" + callbackName;
 		document.body.appendChild(script);
@@ -578,15 +536,13 @@ $(function() {
 
 	try {
 
-		window.addEventListener('load', function() {
-			navPrevNexTitle([{
-				id: 'Blog1_blog-pager-newer-link',
-				type: 'prev'
-			}, {
-				id: 'Blog1_blog-pager-older-link',
-				type: 'next'
-			}]);
-		});
+		navPrevNexTitle([{
+			id: 'Blog1_blog-pager-newer-link',
+			type: 'prev'
+		}, {
+			id: 'Blog1_blog-pager-older-link',
+			type: 'next'
+		}]);
 
 	} catch (e) {}
 
