@@ -416,7 +416,45 @@ function menulinks() {
 	} catch (e) {}
 }
 
+// function navPrevNexTitle(config) {
+// 	config.forEach(function(item) {
+// 		var linkEl = document.getElementById(item.id);
+// 		if (!linkEl || !linkEl.href) return;
+
+// 		var path = linkEl.href.split(/[?#]/)[0].replace(/.*\/\/[^\/]*/, '');
+// 		var callbackName = "cb_" + item.id.replace(/[^a-zA-Z0-9]/g, "_");
+
+// 		window[callbackName] = function(data) {
+// 			if (data.feed.entry && data.feed.entry.length > 0) {
+// 				var postTitle = data.feed.entry[0].title.$t;
+
+// 				linkEl.setAttribute('title', postTitle);
+
+// 				if (item.type === 'prev') {
+// 					linkEl.innerHTML = "&#9665; " + postTitle;
+// 				} else {
+// 					linkEl.innerHTML = postTitle + " &#9655;";
+// 				}
+// 			}
+// 			delete window[callbackName];
+// 		};
+
+// 		var script = document.createElement('script');
+// 		script.src = "/feeds/posts/summary?alt=json-in-script&path=" +
+// 			encodeURIComponent(path) + "&callback=" + callbackName;
+// 		document.body.appendChild(script);
+// 	});
+// }
+
 function navPrevNexTitle(config) {
+	// Helper function to turn slug (my-post.html) into title (My Post)
+	var getPseudoTitle = function(url) {
+		var slug = url.split('/').pop().split('.')[0]; // Get 'my-post-title'
+		return slug.replace(/-/g, ' ').replace(/\b\w/g, function(l) {
+			return l.toUpperCase();
+		});
+	};
+
 	config.forEach(function(item) {
 		var linkEl = document.getElementById(item.id);
 		if (!linkEl || !linkEl.href) return;
@@ -425,15 +463,29 @@ function navPrevNexTitle(config) {
 		var callbackName = "cb_" + item.id.replace(/[^a-zA-Z0-9]/g, "_");
 
 		window[callbackName] = function(data) {
+			var finalTitle = "";
+
+			// Check if we got a valid title from the feed
 			if (data.feed.entry && data.feed.entry.length > 0) {
-				var postTitle = data.feed.entry[0].title.$t;
-
-				linkEl.setAttribute('title', postTitle);
-
-				if (item.type === 'prev') {
-					linkEl.innerHTML = "&#9665; " + postTitle;
+				var fetchedTitle = data.feed.entry[0].title.$t;
+				// If fetching 'prev' and it accidentally grabs current page title, use slug instead
+				if (item.type === 'prev' && document.title.indexOf(fetchedTitle) > -1) {
+					finalTitle = getPseudoTitle(linkEl.href);
 				} else {
-					linkEl.innerHTML = postTitle + " &#9655;";
+					finalTitle = fetchedTitle;
+				}
+			} else {
+				// Total API fail fallback
+				finalTitle = getPseudoTitle(linkEl.href);
+			}
+
+			// Apply the title
+			if (finalTitle) {
+				linkEl.setAttribute('title', finalTitle);
+				if (item.type === 'prev') {
+					linkEl.innerHTML = "&#9665; " + finalTitle;
+				} else {
+					linkEl.innerHTML = finalTitle + " &#9655;";
 				}
 			}
 			delete window[callbackName];
