@@ -232,7 +232,7 @@ hr {
   text-decoration: none !important;
   width: fit-content; /* for chrome! */
   background: VAR(--pager-background-color);
-  font-size: 18px;
+  /*font-size: 18px;*/
   padding: 10px 30px;
   color: var(--pager-link-color);
   font-weight: bold;

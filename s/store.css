@@ -222,7 +222,7 @@ hr {
 /* pager */
 
 .bd_index .pager, .bd_item .pager {
-  column-count: 2;
+  /*column-count: 2;*/
 }
 
 .bd_index .pager a, .bd_item .pager a {
